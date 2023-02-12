@@ -1,0 +1,17 @@
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Bll.deps.json
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Bll.dll
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\ref\Deleite.Bll.dll
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Bll.pdb
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Dal.dll
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Entity.dll
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Dal.pdb
+C:\Proyectos\Deleite\Deleite.Bll\bin\Debug\net6.0\Deleite.Entity.pdb
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.csproj.AssemblyReference.cache
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.AssemblyInfoInputs.cache
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.AssemblyInfo.cs
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.csproj.CoreCompileInputs.cache
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.csproj.CopyComplete
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.dll
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\ref\Deleite.Bll.dll
+C:\Proyectos\Deleite\Deleite.Bll\obj\Debug\net6.0\Deleite.Bll.pdb
