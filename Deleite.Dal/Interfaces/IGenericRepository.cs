@@ -11,7 +11,10 @@ namespace Deleite.Dal.Interfaces
     {
 
         Task<TEntity> Obtener(Expression<Func<TEntity, bool>> filtro);
-
+        public Task<IQueryable<TEntity>> ObtenerTodos()
+        {
+            return Consultar();
+        }
         Task<TEntity> Crear(TEntity entidad);
         Task<bool> Editar(TEntity entidad);
         Task<bool> Eliminar(TEntity entidad);

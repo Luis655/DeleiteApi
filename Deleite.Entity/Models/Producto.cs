@@ -27,7 +27,7 @@ public partial class Producto
 
     public bool? Saludable { get; set; }
 
-    public virtual Categoria IdCategoriaNavigation { get; set; }
+    public virtual Categoria? IdCategoriaNavigation { get; set; }
 
-    public virtual Tematica IdTematicaNavigation { get; set; }
+    public virtual Tematica? IdTematicaNavigation { get; set; }
 }
