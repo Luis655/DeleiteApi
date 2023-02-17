@@ -47,11 +47,14 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get/{filtro}")]
-    public async Task<IActionResult> GetByFilter(string filtro)
+    [Route("{id}")]
+    public async Task<ActionResult<Categoria>> GetByFilter(int id)
     {
-        var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(filtro));
+        var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+        if( result == null)
+            return NotFound();
         return Ok(result);
+      
     }
 
     [HttpPost]
@@ -63,19 +66,47 @@ public class CategoriaController : ControllerBase
         var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/artesania/{createadd.IdCategoria}";
         return Created(result, createadd.IdCategoria);
     }
+    /* [HttpPut]
+     [Route("update/{id}")]
+     public async Task<IActionResult> Editar(int id, [FromBody] Categoria categoria)
+     {
+         var categoriaToUpdate = await _dbcontext.Obtener(x => x.IdCategoria == id);
+         if (categoriaToUpdate == null)
+             return NotFound("La categoria no existe");
+
+         categoriaToUpdate.IdCategoria = categoria.IdCategoria;
+
+         var updated = await _dbcontext.Editar(categoriaToUpdate);
+         if (!updated)
+             return Conflict("El registro no pudo ser actualizado");
+
+         return NoContent();
+     }*/
+
     [HttpPut]
-    [Route("update/{id}")]
-    public async Task<IActionResult> Editar(int id, [FromBody] Categoria categoria)
+    [Route("{id}")]
+    public async Task<ActionResult> Update(int id, [FromBody] Categoria categoria)
     {
-        var categoriaToUpdate = await _dbcontext.Obtener(x => x.IdCategoria == id);
-        if (categoriaToUpdate == null)
-            return NotFound("La categoria no existe");
+        if (categoria.IdCategoria != id)
+        {
+            return BadRequest("El id de la categoria proporcionada no coincide con el id de la URL.");
+        }
 
-        categoriaToUpdate.IdCategoria = categoria.IdCategoria;
+        var existingCategoria = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+        if (existingCategoria == null)
+        {
+            return NotFound();
+        }
 
-        var updated = await _dbcontext.Editar(categoriaToUpdate);
-        if (!updated)
-            return Conflict("El registro no pudo ser actualizado");
+        existingCategoria.Nombre = categoria.Nombre;
+        existingCategoria.Imagen = categoria.Imagen;
+        // Agregar todas las propiedades que se deseen actualizar
+
+        var updatedCategoria = await _dbcontext.Editar(existingCategoria);
+        if (updatedCategoria == null)
+        {
+            return Conflict("La actualización no se pudo realizar.");
+        }
 
         return NoContent();
     }

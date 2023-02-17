@@ -171,3 +171,7 @@ C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\Humanizer.dll
 C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Proyectos\Deleite\Deleite.Api\bin\Debug\net6.0\Humanizer.dll
+C:\Proyectos\Deleite\Deleite.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Proyectos\Deleite\Deleite.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Proyectos\Deleite\Deleite.Api\bin\Debug\net6.0\Newtonsoft.Json.dll

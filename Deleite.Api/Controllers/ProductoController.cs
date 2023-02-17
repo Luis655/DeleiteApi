@@ -3,6 +3,8 @@ using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Deleite.Bll.Jwt;
+using static Deleite.Bll.Jwt.Jwt;
 
 namespace Deleite.Api.Controllers;
 
@@ -13,10 +15,12 @@ public class ProductoController : ControllerBase
 
     private readonly IGenericRepository<Producto> _dbcontext;
     private readonly IHttpContextAccessor _httpContext;
-    public ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext)
+    private readonly ILoginToken _Idbcontext;
+    public ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext)
     {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
+        _Idbcontext = Idbcontext;
     }
     [HttpGet]
     [Route("get/{filtro}")]
@@ -32,7 +36,7 @@ public class ProductoController : ControllerBase
         var createadd = await _dbcontext.Crear(producto);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
-        var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/artesania/{createadd.IdProducto}";
+        var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/Producto/{createadd.IdProducto}";
         return Created(result, createadd.IdProducto);
     }
 
@@ -69,20 +73,24 @@ public class ProductoController : ControllerBase
     }
 
     [HttpPost]
-    [Route("eliminar")]
-    [Authorize]
-
-    public dynamic eliminarProducto(Producto producto) 
+    [Route("eliminar/{id}")]
+    //[Authorize]
+    public dynamic eliminarProducto(int Id) 
     {
         var identity = HttpContext.User.Identity as ClaimsIdentity;
 
-        var rToken = Jwt.validarToken(identity);
+        //var rToken = Jwt.validarToken(identity);
+        //var rToken = (dynamic) _jwt.validarToken(identity);
 
-        if(!rToken.success) return rToken;
+        Jwt token = new Jwt(_Idbcontext);
+        var rToken = token.validarToken(identity);
+        
+        if(!rToken.success) 
+            return rToken;
 
-        Usuario usuario = rToken.result;
-
-        if(usuario.rol != "Administrador")
+        //Usuario usuario = rToken.result;
+        string l = "LUIS";
+        if(l != "LUIS")
         {
             return new
             {
@@ -96,7 +104,7 @@ public class ProductoController : ControllerBase
             {
                 success = true,
                 message = "producto eliminado",
-                result = producto
+                result = Id
             };
     }
 

@@ -17,11 +17,22 @@ public class TematicaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get/{filtro}")]
-    public async Task<IActionResult> GetByFilter(string filtro)
+    [Route("getall")]
+    public async Task<IActionResult> GetAll()
     {
-        var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(filtro));
+        var result = await _dbcontext.ObtenerTodos();
         return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<ActionResult<Tematica>> GetByFilter(int id)
+    {
+        var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
+        if (result == null)
+            return NotFound();
+        return Ok(result);
+
     }
 
     [HttpPost]
@@ -35,22 +46,51 @@ public class TematicaController : ControllerBase
         return Created(result, createadd.IdTematica);
     }
 
+    /*    [HttpPut]
+        [Route("update/{id}")]
+        public async Task<IActionResult> Editar(int id, [FromBody] Tematica tematica)
+        {
+            var tematicaToUpdate = await _dbcontext.Obtener(x => x.IdTematica == id);
+            if (tematicaToUpdate == null)
+                return NotFound("La tematica no existe");
+
+            tematicaToUpdate.IdTematica = tematica.IdTematica;
+
+            var updated = await _dbcontext.Editar(tematicaToUpdate);
+            if (!updated)
+                return Conflict("El registro no pudo ser actualizado");
+
+            return NoContent();
+        }*/
+
+
     [HttpPut]
-    [Route("update/{id}")]
-    public async Task<IActionResult> Editar(int id, [FromBody] Tematica tematica)
+    [Route("{id}")]
+    public async Task<ActionResult> Update(int id, [FromBody] Tematica tematica)
     {
-        var tematicaToUpdate = await _dbcontext.Obtener(x => x.IdTematica == id);
-        if (tematicaToUpdate == null)
-            return NotFound("La tematica no existe");
+        if (tematica.IdTematica != id)
+        {
+            return BadRequest("El id de la temática proporcionada no coincide con el id de la URL.");
+        }
 
-        tematicaToUpdate.IdTematica = tematica.IdTematica;
+        var existingTematica = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
+        if (existingTematica == null)
+        {
+            return NotFound();
+        }
 
-        var updated = await _dbcontext.Editar(tematicaToUpdate);
-        if (!updated)
-            return Conflict("El registro no pudo ser actualizado");
+        existingTematica.NombreT = tematica.NombreT;
+        // Agregar todas las propiedades que se deseen actualizar
+
+        var updatedTematica = await _dbcontext.Editar(existingTematica);
+        if (updatedTematica == null)
+        {
+            return Conflict("La actualización no se pudo realizar.");
+        }
 
         return NoContent();
     }
+
 
     [HttpDelete]
     [Route("delete/{id}")]

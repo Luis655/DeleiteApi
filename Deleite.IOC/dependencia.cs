@@ -9,6 +9,7 @@ using Deleite.Dal.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Deleite.Dal.Implementacion;
 using Deleite.Dal.Interfaces;
+using Deleite.Entity.Models;
 /*using Deleite.Bll.Implementacion;
 using Deleite.Bll.Interfaces;*/
 
@@ -20,6 +21,10 @@ public static class dependencia
             options.UseSqlServer(Configuration.GetConnectionString("coneccionBD"));
         });
         services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddTransient(typeof(ILoginToken), typeof(LoginToken));
+        services.AddTransient(typeof(ILoginToken2), typeof(LoginToken2));
+
         //services.AddScoped<IVentaRepository, VentaRepository>();
+
     }
 }

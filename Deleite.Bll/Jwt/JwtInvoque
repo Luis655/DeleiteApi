@@ -1,0 +1,27 @@
+/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using Deleite.Entity.Models;
+using System.Security.Claims;
+using Deleite.Dal.DBContext;
+
+namespace Deleite.Bll.Jwt
+{
+        public class JwtInvoque
+        {
+        private readonly DeleitebdContext _dbcontext;
+        public JwtInvoque(DeleitebdContext dbcontect)
+        {
+            _dbcontext = dbcontect;
+        }
+            public static dynamic Metodo(ClaimsIdentity identity)
+            {
+                Jwt miObjeto = new Jwt();
+                miObjeto.validarToken(identity);
+            }
+        }
+}
+*/
