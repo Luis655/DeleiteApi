@@ -2,6 +2,7 @@ using System.Dynamic;
 using System.Text;
 using Deleite.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -13,7 +14,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>{
-    //Diseño del titulo
+    //Diseï¿½o del titulo
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Deleite", Version = "v1" });
 
     //Boton Autorize Swagger
@@ -55,7 +56,13 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod();
     });
 });
-
+builder.Services.Configure<FormOptions>(options =>
+ {
+    options.KeyLengthLimit = int.MaxValue;
+    options.ValueLengthLimit = int.MaxValue;
+    options.MultipartBodyLengthLimit = int.MaxValue;
+    options.MultipartHeadersLengthLimit = int.MaxValue;
+ });
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters

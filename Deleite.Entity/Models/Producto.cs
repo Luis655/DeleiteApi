@@ -7,7 +7,7 @@ public partial class Producto
 {
     public int IdProducto { get; set; }
 
-    public int IdCategoria { get; set; }
+    public int? IdCategoria { get; set; }
 
     public bool? IdConfirmacionT { get; set; }
 
@@ -30,4 +30,6 @@ public partial class Producto
     public virtual Categoria? IdCategoriaNavigation { get; set; }
 
     public virtual Tematica? IdTematicaNavigation { get; set; }
+
+    public virtual ICollection<ImagenProducto> ImagenProductos { get; } = new List<ImagenProducto>();
 }

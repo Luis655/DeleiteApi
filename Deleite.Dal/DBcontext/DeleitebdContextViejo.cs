@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Deleite.Entity.Models;
 
-namespace Deleite.Entity.Models;
+namespace Deleite.Dal.DBContext.Viejo;
 
 public partial class DeleitebdContext : DbContext
 {
@@ -17,15 +18,15 @@ public partial class DeleitebdContext : DbContext
 
     public virtual DbSet<Categoria> Categorias { get; set; }
 
-    public virtual DbSet<ImagenProducto> ImagenProductos { get; set; }
-
     public virtual DbSet<Producto> Productos { get; set; }
 
     public virtual DbSet<Tematica> Tematicas { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Categoria>(entity =>
@@ -45,24 +46,6 @@ public partial class DeleitebdContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("NOMBRE");
-        });
-
-        modelBuilder.Entity<ImagenProducto>(entity =>
-        {
-            entity.HasKey(e => e.IdimgProducto).HasName("PK_id_imgProducto");
-
-            entity.ToTable("imagenProducto");
-
-            entity.Property(e => e.IdimgProducto).HasColumnName("idimgProducto");
-            entity.Property(e => e.IdProducto).HasColumnName("id_producto");
-            entity.Property(e => e.NombreFoto)
-                .IsUnicode(false)
-                .HasColumnName("nombreFoto");
-
-            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.ImagenProductos)
-                .HasForeignKey(d => d.IdProducto)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_id_producto");
         });
 
         modelBuilder.Entity<Producto>(entity =>
