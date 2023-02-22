@@ -15,8 +15,10 @@ namespace Deleite.Api.Controllers;
 [Route("api/[controller]")] 
 public class ProductoController : ControllerBase {
 
-    private readonly IGenericRepository<Producto> _dbcontext; private readonly IHttpContextAccessor _httpContext; private readonly ILoginToken _Idbcontext; public 
-    ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
+    private readonly IGenericRepository<Producto> _dbcontext; 
+    private readonly IHttpContextAccessor _httpContext; 
+    private readonly ILoginToken _Idbcontext; 
+    public ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _Idbcontext = Idbcontext;
