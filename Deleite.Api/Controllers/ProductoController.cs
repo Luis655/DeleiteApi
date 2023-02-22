@@ -1,26 +1,12 @@
-﻿using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Mvc;
-using Deleite.Dal.Interfaces;
-using Deleite.Entity.Models;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Deleite.Bll.Jwt;
-using static Deleite.Bll.Jwt.Jwt;
-using Deleite.Entity.DtoModels;
+﻿using System.Runtime.CompilerServices; using System.Security.Cryptography; using Microsoft.AspNetCore.Mvc; using Deleite.Dal.Interfaces; using Deleite.Entity.Models; using 
+System.Security.Claims; using Microsoft.AspNetCore.Authorization; using Deleite.Bll.Jwt; using static Deleite.Bll.Jwt.Jwt; using Deleite.Entity.DtoModels;
 
 namespace Deleite.Api.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ProductoController : ControllerBase
-{
+[ApiController] [Route("api/[controller]")] public class ProductoController : ControllerBase {
 
-    private readonly IGenericRepository<Producto> _dbcontext;
-    private readonly IHttpContextAccessor _httpContext;
-    private readonly ILoginToken _Idbcontext;
-    public ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext)
-    {
+    private readonly IGenericRepository<Producto> _dbcontext; private readonly IHttpContextAccessor _httpContext; private readonly ILoginToken _Idbcontext; public 
+    ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _Idbcontext = Idbcontext;
