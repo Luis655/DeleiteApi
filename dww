@@ -1,0 +1,54 @@
+[33mcommit 123287b254cdc76862b591587d85638f8961335f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: afa3779 349e3e1
+Author: Luis Macias Hau <luissmh150@gmail.com>
+Date:   Tue Feb 21 17:51:50 2023 -0600
+
+    merge imgs
+
+[33mcommit 349e3e1ef97ab4088efe549d13b7a95252cf7be3[m[33m ([m[1;32mrama3[m[33m)[m
+Author: Luis Macias Hau <luissmh150@gmail.com>
+Date:   Tue Feb 21 17:40:13 2023 -0600
+
+    commit images
+
+[33mcommit afa37790dbd831e70184f88390ab3fafcca7e4b4[m
+Author: Luis Macias Hau <luissmh150@gmail.com>
+Date:   Sat Feb 18 19:33:10 2023 -0600
+
+    img add 4
+
+[33mcommit 7c68e6c53b0602dc8bc3fd78d8bfa31735a030f8[m
+Author: Luis Macias Hau <luissmh150@gmail.com>
+Date:   Sat Feb 18 19:31:10 2023 -0600
+
+    add images 3
+
+[33mcommit 39652d3d018990ad2f142690f88c43c59b979b34[m
+Author: AngelCS <casanosfera@gmail.com>
+Date:   Fri Feb 17 00:27:05 2023 -0600
+
+    cuarto commit acs
+
+[33mcommit 0c4ff808e87ed40c894557f790bbc7fad3a6e569[m
+Author: AngelCS <casanosfera@gmail.com>
+Date:   Mon Feb 13 02:24:02 2023 -0600
+
+    tercer commit
+
+[33mcommit 89c721aec4266147a6febe351fccef1d618aa33a[m
+Author: AngelCS <casanosfera@gmail.com>
+Date:   Sun Feb 12 12:04:03 2023 -0600
+
+    Segundo commit
+
+[33mcommit 20505878c812ccc6090524225b703c414228cf01[m
+Author: Luis655 <85584930+Luis655@users.noreply.github.com>
+Date:   Sun Feb 12 10:10:01 2023 -0600
+
+    Initial commit
+
+[33mcommit 4dd70897cc67e8f163ee7698e2a8f0b9beca7a7d[m
+Author: Luis Macias Hau <luissmh150@gmail.com>
+Date:   Sun Feb 12 10:00:30 2023 -0600
+
+    First commit
