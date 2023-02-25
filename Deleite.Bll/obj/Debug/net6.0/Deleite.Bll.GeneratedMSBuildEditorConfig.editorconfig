@@ -7,12 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Deleite.Bll
-<<<<<<< HEAD
-<<<<<<< HEAD
-build_property.ProjectDir = c:\Proyectos\DeleiteApi\Deleite.Bll\
-=======
-build_property.ProjectDir = c:\Proyectos\Deleite\Deleite.Bll\
->>>>>>> 6166019 (merge3)
-=======
-build_property.ProjectDir = c:\Proyectos\Deleite\Deleite.Bll\
->>>>>>> 6166019 (merge3)
+build_property.ProjectDir = C:\Proyectos\DeleiteApi\Deleite.Bll\

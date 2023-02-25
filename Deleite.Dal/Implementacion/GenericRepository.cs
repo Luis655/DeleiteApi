@@ -178,8 +178,17 @@ namespace Deleite.Dal.Implementacion
 
         public async Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro = null)
         {
-            IQueryable<TEntity> queryEntidad = filtro == null ? _dbcontext.Set<TEntity>() : _dbcontext.Set<TEntity>().Where(filtro);
-            return queryEntidad;
+            try
+            {
+                 IQueryable<TEntity> queryEntidad = filtro == null ? _dbcontext.Set<TEntity>() : _dbcontext.Set<TEntity>().Where(filtro);
+                return queryEntidad;
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+           
         }
         public async Task<IQueryable<ImagenProducto>> Consultarimgs(Expression<Func<ImagenProducto, bool>> filtro=null){
             IQueryable<ImagenProducto> queryEntidad = filtro == null ? _dbcontext.Set<ImagenProducto>() : _dbcontext.Set<ImagenProducto>().Where(filtro);

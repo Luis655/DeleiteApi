@@ -35,7 +35,7 @@ public class ProductoController : ControllerBase {
     public async Task<IActionResult> mostrarimagenes(){
 
 
-        var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png");
+        var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "34567154-7ab3-456b-90b6-0eb1ba52ea96.png");
         var bytes = System.IO.File.ReadAllBytes(ruta);
         var base64String = Convert.ToBase64String(bytes);
         var resultado = new {
@@ -142,7 +142,7 @@ public class ProductoController : ControllerBase {
 
     [HttpPut]
     [Route("update/{id}")]
-    public async Task<IActionResult> Editar(int id, [FromBody] Producto producto)
+    public async Task<IActionResult> Editar(int id, [FromForm] Producto producto)
     {
         var productoToUpdate = await _dbcontext.Obtener(x => x.IdProducto == id);
         if (productoToUpdate == null)
@@ -153,8 +153,7 @@ public class ProductoController : ControllerBase {
         var updated = await _dbcontext.Editar(productoToUpdate);
         if (!updated)
             return Conflict("El registro no pudo ser actualizado");
-
-        return NoContent();
+        return Ok("EXITO");
     }
 
     [HttpDelete]
@@ -173,9 +172,9 @@ public class ProductoController : ControllerBase {
     }
 
     [HttpPost]
-    [Route("eliminar/{id}")]
+    [Route("Token/{id}")]
     [Authorize]
-    public dynamic eliminarProducto(int Id) 
+    public dynamic Token(int Id) 
     {
         var identity = HttpContext.User.Identity as ClaimsIdentity;
 

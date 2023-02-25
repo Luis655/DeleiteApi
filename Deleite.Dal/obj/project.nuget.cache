@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FLiwL5H7OdvpF6IfmD34WhO5jjFd7i7vRVtYU5Uyv/hRX7nSV1KleX0S4VupijkU5RHaSkj/KicJic/lpuLmNQ==",
+  "dgSpecHash": "O9LRemfng+WNgrjFseaQsdHugudNpka61ZqtVGNDIPEQ4K5XVupzdO9HKNhsASz9gUvWnPlPvb88FGDIq7oONw==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj",
+  "projectFilePath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luiss\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Luiss\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

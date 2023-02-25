@@ -3073,11 +3073,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj",
+      "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
       "projectName": "Deleite.Bll",
-      "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj",
+      "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
       "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\Deleite\\Deleite.Bll\\obj\\",
+      "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3092,11 +3092,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj": {
-              "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj"
+            "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+              "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
             },
-            "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj": {
-              "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj"
+            "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+              "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
             }
           }
         }

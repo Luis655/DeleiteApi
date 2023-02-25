@@ -3307,11 +3307,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj",
+      "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
       "projectName": "Deleite.Entity",
-      "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj",
+      "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
       "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\obj\\",
+      "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"

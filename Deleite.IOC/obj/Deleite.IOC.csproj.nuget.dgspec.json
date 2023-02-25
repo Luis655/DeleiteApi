@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\Deleite\\Deleite.IOC\\Deleite.IOC.csproj": {}
+    "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj": {
+    "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj",
+        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
         "projectName": "Deleite.Bll",
-        "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj",
+        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
         "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Deleite\\Deleite.Bll\\obj\\",
+        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj": {
-                "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj"
+              "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
               },
-              "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj": {
-                "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj"
+              "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj": {
+    "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj",
+        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
         "projectName": "Deleite.Dal",
-        "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj",
+        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
         "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\obj\\",
+        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -85,8 +85,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj": {
-                "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj"
+              "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
               }
             }
           }
@@ -125,14 +125,14 @@
         }
       }
     },
-    "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj": {
+    "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj",
+        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
         "projectName": "Deleite.Entity",
-        "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\Deleite.Entity.csproj",
+        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
         "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Deleite\\Deleite.Entity\\obj\\",
+        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -193,14 +193,14 @@
         }
       }
     },
-    "C:\\Proyectos\\Deleite\\Deleite.IOC\\Deleite.IOC.csproj": {
+    "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Deleite\\Deleite.IOC\\Deleite.IOC.csproj",
+        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
         "projectName": "Deleite.IOC",
-        "projectPath": "C:\\Proyectos\\Deleite\\Deleite.IOC\\Deleite.IOC.csproj",
+        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
         "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Deleite\\Deleite.IOC\\obj\\",
+        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -215,11 +215,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj": {
-                "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Bll\\Deleite.Bll.csproj"
+              "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
+                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj"
               },
-              "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj": {
-                "projectPath": "C:\\Proyectos\\Deleite\\Deleite.Dal\\Deleite.Dal.csproj"
+              "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
               }
             }
           }
