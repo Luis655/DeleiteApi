@@ -8,7 +8,6 @@ public class DtoProduco
     public string? NombreP { get; set; }
     public string? DescripcionP { get; set; }
     public string? Precio { get; set; }
-    public string? ImagenPrincipal { get; set; }
     public byte[]? ImagenPrincipalchar { get; set; }
     public bool? Popular { get; set; }
     public string? Ingredienteselect { get; set; }

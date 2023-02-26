@@ -195,7 +195,40 @@ namespace Deleite.Dal.Implementacion
             return queryEntidad;
         }
 
+        public async Task<bool>borrarimagen(ImagenProducto entidad)
+        {
+            try
+            {
+                var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", entidad.NombreFoto);
+                File.Delete(rutaImagen);
+                _dbcontext.Remove(entidad);
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                 throw new Exception(e.Message);
+            }
+        }
 
+        public async Task<bool>borrarimagenProducto(Producto entidad)
+        {
+            try
+            {
+                if (entidad.ImagenPrincipal!=null)
+                {
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", entidad.ImagenPrincipal);
+                    File.Delete(rutaImagen);
+                }
+                _dbcontext.Remove(entidad);
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                 throw new Exception(e.Message);
+            }
+        }
 
     }
 }

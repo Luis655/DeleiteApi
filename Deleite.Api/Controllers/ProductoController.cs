@@ -24,10 +24,16 @@ public class ProductoController : ControllerBase {
         _Idbcontext = Idbcontext;
     }
     [HttpGet]
-    [Route("get/{filtro}")]
-    public async Task<IActionResult> GetByFilter(string filtro)
+    [Route("get")]
+    public async Task<IActionResult> getAll(){
+        var result = await _dbcontext.ObtenerTodos();
+        return Ok(result);
+    }
+    [HttpGet]
+    [Route("get/{id}")]
+    public async Task<IActionResult> GetByFilter(int id)
     {
-        var result = await _dbcontext.Obtener(x => x.IdProducto.Equals(filtro));
+        var result = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
         return Ok(result);
     }
     [HttpGet]
@@ -139,6 +145,15 @@ public class ProductoController : ControllerBase {
         //return Created(result, createadd.IdProducto);
         return Ok(createadd);
     }
+    /*[HttpDelete]
+    [Route("DeleteImg/{id}")]
+    public async Task<IActionResult>BorrarFoto(int id)
+    {
+        var delteimg = await _dbcontext.borrarimagen(id);
+        if (!delteimg)
+            return NotFound("imagen no encontrada");
+        return Ok("imagen borrada con exito");
+    }*/
 
     [HttpPut]
     [Route("update/{id}")]
@@ -164,11 +179,10 @@ public class ProductoController : ControllerBase {
         if (categoriaToDelete == null)
             return NotFound("La categoria no existe");
 
-        var deleted = await _dbcontext.Eliminar(categoriaToDelete);
+        var deleted = await _dbcontext.borrarimagenProducto(categoriaToDelete);
         if (!deleted)
             return Conflict("El registro no pudo ser eliminado");
-
-        return NoContent();
+        return Ok("Producto borrado exitosamente");
     }
 
     [HttpPost]
