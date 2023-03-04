@@ -8,6 +8,8 @@
 *.so
 *.pdb
 *.cache
+/c/Proyectos/DeleiteApi/Deleite.Api/obj
+*.editorconfig
 # Packages 
 ############
 # it's better to unpack these files and commit the raw source

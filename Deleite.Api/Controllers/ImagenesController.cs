@@ -19,10 +19,7 @@ namespace Deleite.Api.Controllers
             [HttpDelete]
             [Route("delete/{id}")]
             public async Task<IActionResult> borrarImagen(int id){
-                var obtenerId = await _IgenericRepository.Obtener(x => x.IdimgProducto == id);
-                if(obtenerId==null)
-                    return NotFound("No se encontro el registro");
-                var borrarImagen = await _IgenericRepository.borrarimagen(obtenerId);
+                var borrarImagen = await _IgenericRepository.borrarimagen(id);
                 if (!borrarImagen)
                    return Ok("no se pudo borrar");
                 return Ok("se borro con exito la imagen");

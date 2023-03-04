@@ -2,6 +2,7 @@ namespace Deleite.Entity.DtoModels
 {
 public class DtoProduco
 {
+    public int? IdProducto { get; set; }
     public int? IdCategoria { get; set; }
     public bool? IdConfirmacionT { get; set; }
     public int? IdTematica { get; set; }

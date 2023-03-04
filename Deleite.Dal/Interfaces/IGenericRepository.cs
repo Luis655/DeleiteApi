@@ -14,18 +14,19 @@ namespace Deleite.Dal.Interfaces
     {
 
         Task<TEntity> Obtener(Expression<Func<TEntity, bool>> filtro);
+        Task<IQueryable<Producto>> getAll();
         public Task<IQueryable<TEntity>> ObtenerTodos()
         {
             return Consultar();
         }
         Task<TEntity> Crear(TEntity entidad);
         Task<DtoImagenProducto> AddImageProducto(DtoImagenProducto entidad);
-        Task<DtoProduco> CrearProducto(DtoProduco entidad);
+        Task<DtoProduco> CrearProducto(DtoProduco entidad); 
         Task<bool> Editar(TEntity entidad);
         Task<bool> Eliminar(TEntity entidad);
         Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro=null);
         Task<IQueryable<ImagenProducto>> Consultarimgs(Expression<Func<ImagenProducto, bool>> filtro=null);
-        Task<bool> borrarimagen(ImagenProducto entidad);
+        Task<bool> borrarimagen(int id);
         Task<bool> borrarimagenProducto(Producto entidad);
 
          

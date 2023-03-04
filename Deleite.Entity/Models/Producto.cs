@@ -5,7 +5,7 @@ namespace Deleite.Entity.Models;
 
 public partial class Producto
 {
-    public int IdProducto { get; set; }
+    public int? IdProducto { get; set; }
 
     public int? IdCategoria { get; set; }
 

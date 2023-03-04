@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices; 
+﻿using System.Linq;
+using System.Runtime.CompilerServices; 
 using System.Security.Cryptography; 
 using Microsoft.AspNetCore.Mvc; 
 using Deleite.Dal.Interfaces; 
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Deleite.Bll.Jwt; 
 using static Deleite.Bll.Jwt.Jwt; 
 using Deleite.Entity.DtoModels;
+using System.Net;
 
 namespace Deleite.Api.Controllers;
 
@@ -26,8 +28,31 @@ public class ProductoController : ControllerBase {
     [HttpGet]
     [Route("get")]
     public async Task<IActionResult> getAll(){
-        var result = await _dbcontext.ObtenerTodos();
-        return Ok(result);
+        var result = await _dbcontext.getAll();
+        List<DtoresultP> resultados = new List<DtoresultP>();
+        foreach (var item in result)
+        {
+            var rutas = item.ImagenPrincipal != null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.ImagenPrincipal) : Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+
+            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
+            var base64Strings = Convert.ToBase64String(bytess);
+            var resultado2 = new DtoresultP {
+            Base64 = base64Strings,
+            Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
+            Tipo = "image/png",
+            NombreP=item.NombreP,
+            DescripcionP=item.DescripcionP,
+            Precio= item.Precio,
+            Ingredienteselect=item.Ingredienteselect,
+            NombreTematica=item.IdTematicaNavigation.NombreT,
+            NombreCategoria=item.IdCategoriaNavigation.Nombre
+            };
+
+            resultados.Add(resultado2);
+
+        }
+        return Ok(resultados);
     }
     [HttpGet]
     [Route("get/{id}")]
@@ -109,7 +134,7 @@ public class ProductoController : ControllerBase {
     [HttpPost]
     [Route("create")]
     
-    public async Task<IActionResult> create([FromForm] DtoProduco producto)
+    public async Task<IActionResult> create([FromBody] DtoProduco producto)
     {
 
         var createadd = await _dbcontext.CrearProducto(producto);
@@ -117,6 +142,8 @@ public class ProductoController : ControllerBase {
             return Conflict("El registro no pudo ser realizado");
         //var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/Producto/{createadd.IdProducto}";
         //return Created(result, createadd.IdProducto);
+        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent("El usuario con el id " + createadd.IdProducto + "fue creado o actualizado");
         return Ok(createadd);
     }
             /**
@@ -137,7 +164,7 @@ public class ProductoController : ControllerBase {
     */
     [HttpPost]
     [Route("addImage")]
-    public async Task<IActionResult> AgregarFotosProducto([FromForm] DtoImagenProducto imgs){
+    public async Task<IActionResult> AgregarFotosProducto([FromBody] DtoImagenProducto imgs){
          var createadd = await _dbcontext.AddImageProducto(imgs);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
@@ -184,7 +211,17 @@ public class ProductoController : ControllerBase {
             return Conflict("El registro no pudo ser eliminado");
         return Ok("Producto borrado exitosamente");
     }
-
+    [HttpGet]
+    [Route("fotos")]
+    public dynamic NumeroDeFotos() {
+        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+        int count = Directory.GetFiles(rutas).Length;
+        return new {
+            succes = true,
+            message = "hay un total de " + count + "en el proyecto",
+            result =count
+        };
+    }
     [HttpPost]
     [Route("Token/{id}")]
     [Authorize]
