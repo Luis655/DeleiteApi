@@ -4,7 +4,6 @@ namespace Deleite.Entity.DtoModels
     {
         public int? IdProducto{get; set;}
         public bool? IdConfirmacionT { get; set; }
-
         public string Base64 {get; set;}
         public string Nombre {get; set;}
         public string Tipo {get; set;}

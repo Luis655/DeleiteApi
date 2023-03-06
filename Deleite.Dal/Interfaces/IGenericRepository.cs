@@ -15,6 +15,8 @@ namespace Deleite.Dal.Interfaces
 
         Task<TEntity> Obtener(Expression<Func<TEntity, bool>> filtro);
         Task<IQueryable<Producto>> getAll();
+        Task<IQueryable<Categoria>> getAllProductos();
+
         public Task<IQueryable<TEntity>> ObtenerTodos()
         {
             return Consultar();
@@ -22,6 +24,8 @@ namespace Deleite.Dal.Interfaces
         Task<TEntity> Crear(TEntity entidad);
         Task<DtoImagenProducto> AddImageProducto(DtoImagenProducto entidad);
         Task<DtoProduco> CrearProducto(DtoProduco entidad); 
+        Task<DtoCategorias> CrearCategoria(DtoCategorias entidad); 
+
         Task<bool> Editar(TEntity entidad);
         Task<bool> Eliminar(TEntity entidad);
         Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro=null);

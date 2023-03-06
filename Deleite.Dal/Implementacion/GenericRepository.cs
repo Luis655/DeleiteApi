@@ -191,6 +191,150 @@ namespace Deleite.Dal.Implementacion
                 throw;
             }
         }
+
+
+
+
+
+
+
+
+
+                public async Task<DtoCategorias> CrearCategoria(DtoCategorias producto)
+        {
+            try
+            {
+                if (producto.IdCategoria == null)
+                {
+                    // Extraer la imagen de la persona.
+                    //var imagenBytes = Convert.FromBase64String(producto.ImagenPrincipal);
+                    // Generar un nombre único para la imagen.
+                    var nombreImagen = Guid.NewGuid().ToString() + ".png";
+                    // Obtener la ruta donde se guardarán las imágenes.
+                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                    Console.WriteLine(ruta);
+                    // Si la carpeta no existe, crearla.
+                    if (!Directory.Exists(ruta))
+                    {
+                        Directory.CreateDirectory(ruta);
+                    }
+                    // Guardar la imagen en la ruta.
+                    var rutaImagen = Path.Combine(ruta, nombreImagen);
+                    using (var stream = new FileStream(rutaImagen, FileMode.Create))
+                    {
+                        if(producto.ImagenPrincipalchar == null ||  producto.ImagenPrincipalchar.Length < 1){
+                        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+                        var bytes = System.IO.File.ReadAllBytes(rutas);
+                        var base64String = Convert.ToBase64String(bytes);
+                        var imagenBytes = Convert.FromBase64String(base64String);
+
+
+                        await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
+                        }else{
+                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+
+                        }
+                    }
+                    using (var transaction = _dbcontext.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Guardar el nombre de archivo en la base de datos.
+                            var nuevaCategoria = new Categoria
+                            {
+
+                                IdCategoria = producto.IdCategoria,
+                                Nombre = producto.Nombre,
+                                Imagen = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png") : nombreImagen
+                            };
+                            _dbcontext.Set<Categoria>().Add(nuevaCategoria);
+                            await _dbcontext.SaveChangesAsync();
+                            transaction.Commit();
+                            int? prod = nuevaCategoria.IdCategoria;
+                            producto = new DtoCategorias
+                            {
+                                IdCategoria = prod
+                            };
+                            return producto;
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+
+                else
+                {
+                    var data = await _dbcontext.Categorias.FirstOrDefaultAsync(x => x.IdCategoria == producto.IdCategoria);
+                    if (data != null)
+                    {
+
+                        using (var transaction = _dbcontext.Database.BeginTransaction())
+                        {
+                            try
+                            {
+
+                                var nombreImagen="";
+                                if(producto.ImagenPrincipalchar != null){
+                                nombreImagen = Guid.NewGuid().ToString() + ".png";
+                                // Obtener la ruta donde se guardarán las imágenes.
+                                var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                                if (data.Imagen != null)
+                                {
+                                    var rutaImagenAnterior = Path.Combine(ruta, data.Imagen);
+                                    File.Delete(rutaImagenAnterior);
+                                }
+                                // Si la carpeta no existe, crearla.
+                                if (!Directory.Exists(ruta))
+                                {
+                                    Directory.CreateDirectory(ruta);
+                                }
+
+                                // Guardar la imagen en la ruta.
+                                var rutaImagen = Path.Combine(ruta, nombreImagen);
+                                using (var stream = new FileStream(rutaImagen, FileMode.Create))
+                                {
+                                    await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+                                }
+                                }
+                                data.Nombre = producto.Nombre;
+                                data.Imagen = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", data.Imagen) : nombreImagen;
+                                //gusradr los cambios en la base de datos
+                                _dbcontext.SaveChanges();
+                                transaction.Commit();
+                                producto.IdCategoria = data.IdCategoria;
+                                return producto;
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback();
+                                throw new Exception("este error sucedio en GenericRepository en la linea 173" + ex.Message);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return producto;
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+        
         public async Task<DtoImagenProducto> AddImageProducto(DtoImagenProducto producto)
         {
             try
@@ -270,6 +414,17 @@ namespace Deleite.Dal.Implementacion
             .Include(x => x.IdCategoriaNavigation)
             .Include(x => x.IdTematicaNavigation)
             .AsQueryable<Producto>().AsNoTracking().ToListAsync();
+
+
+            return producto.AsQueryable();
+        }
+
+
+        public async Task<IQueryable<Categoria>> getAllProductos()
+        {
+
+            var producto = await _dbcontext.Categorias
+            .AsQueryable<Categoria>().AsNoTracking().ToListAsync();
 
 
             return producto.AsQueryable();

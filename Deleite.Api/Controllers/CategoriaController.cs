@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
 using Microsoft.EntityFrameworkCore;
+using Deleite.Entity.DtoModels;
 
 namespace Deleite.Api.Controllers;
 
@@ -57,10 +58,47 @@ public class CategoriaController : ControllerBase
       
     }
 
+
+
+
+
+
+  [HttpGet]
+    [Route("getCategorias")]
+    public async Task<IActionResult> getAll(){
+        var result = await _dbcontext.getAllProductos();
+        List<DtoImagenesCategorias> resultados = new List<DtoImagenesCategorias>();
+        foreach (var item in result)
+        {
+            var rutas = item.Imagen != null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.Imagen) : Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+
+            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
+            var base64Strings = Convert.ToBase64String(bytess);
+            var resultado2 = new DtoImagenesCategorias {
+            
+            IdCategoria = item.IdCategoria,
+            Base64 =base64Strings,
+            Nombre = item.Imagen,
+            Tipo = "image/png",
+            Imagen = item.Imagen,
+            NombreCategoria = item.Nombre
+            };
+
+            resultados.Add(resultado2);
+
+        }
+        return Ok(resultados);
+    }
+
+
+
+
+
     [HttpPost]
     [Route("create")]
-    public async Task<IActionResult> create([FromBody] Categoria categoria){
-        var createadd = await _dbcontext.Crear(categoria);
+    public async Task<IActionResult> create([FromBody] DtoCategorias categoria){
+        var createadd = await _dbcontext.CrearCategoria(categoria);
         if(createadd==null)
             return Conflict("El registro no pudo ser realizada");
         var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/artesania/{createadd.IdCategoria}";
@@ -105,7 +143,7 @@ public class CategoriaController : ControllerBase
         var updatedCategoria = await _dbcontext.Editar(existingCategoria);
         if (updatedCategoria == null)
         {
-            return Conflict("La actualización no se pudo realizar.");
+            return Conflict("La actualizaciï¿½n no se pudo realizar.");
         }
 
         return NoContent();
