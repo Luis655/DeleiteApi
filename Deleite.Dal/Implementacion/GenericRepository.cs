@@ -65,7 +65,7 @@ namespace Deleite.Dal.Implementacion
                     var rutaImagen = Path.Combine(ruta, nombreImagen);
                     using (var stream = new FileStream(rutaImagen, FileMode.Create))
                     {
-
+                        if(producto.ImagenPrincipalchar == null){
                         var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
                         var bytes = System.IO.File.ReadAllBytes(rutas);
                         var base64String = Convert.ToBase64String(bytes);
@@ -73,6 +73,10 @@ namespace Deleite.Dal.Implementacion
 
 
                         await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
+                        }else{
+                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+
+                        }
                     }
                     using (var transaction = _dbcontext.Database.BeginTransaction())
                     {
