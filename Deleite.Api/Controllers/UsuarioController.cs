@@ -7,6 +7,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Deleite.Dal.DBContext;
+using FluentValidation;
+using Deleite.Entity.DtoModels;
 
 namespace Deleite.Api.Controllers;
 
@@ -18,8 +20,10 @@ public class UsuarioController : ControllerBase
     private readonly IGenericRepository<Usuario> _dbcontext;
     private readonly ILoginToken _dbrepo;
     private readonly IHttpContextAccessor _httpContext;
-    public UsuarioController(IGenericRepository<Usuario> dbcontext, ILoginToken dbrepo, IHttpContextAccessor httpContext, IConfiguration configuration)
+    private readonly IValidator<DtoUserLogin> _createValidator;
+    public UsuarioController(IGenericRepository<Usuario> dbcontext, ILoginToken dbrepo, IHttpContextAccessor httpContext, IConfiguration configuration, IValidator<DtoUserLogin> CreateValidator)
     {
+        _createValidator = CreateValidator;
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _configuration = configuration;
@@ -37,15 +41,18 @@ public class UsuarioController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public dynamic IniciarSesion([FromBody] Usuario usuario)
+    public async Task<dynamic> IniciarSesion([FromBody] DtoUserLogin usuario)
     {
+        var ValidationResult = await _createValidator.ValidateAsync(usuario);
+        if(!ValidationResult.IsValid)
+            return UnprocessableEntity(ValidationResult.Errors.Select(x => $"Error: {x.ErrorMessage}"));
         /*var data = JsonConvert.DeserializeObject<dynamic>(optData.ToString());
         if (data==null)return new{message="ocurrio un error"};        
 
         string user = data.Nombre.ToString();
         string password = data.Contraseña.ToString();*/
 
-        var user = _dbrepo.GetLogin(usuario);
+        var user = _dbrepo.getuserDto(usuario);
         
 
         //Usuario usuario = Usuario.DB().Where(x => x.Nombre == user && x.Contraseña == password).FirstOrDefault();
@@ -68,8 +75,8 @@ public class UsuarioController : ControllerBase
                     new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                    new Claim("IdUsuario", usuario.IdUsuario.ToString()),
-                    new Claim("Nombre", usuario.Nombre)
+                    new Claim("Correo", usuario.Correo.ToString()),
+                    //new Claim("Nombre", usuario.Nombre)
                 };
 
                 var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key));

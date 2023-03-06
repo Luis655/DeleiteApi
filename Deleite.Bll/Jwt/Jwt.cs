@@ -32,7 +32,7 @@ namespace Deleite.Bll.Jwt
                     };
                 } 
 
-                var id = identity.Claims.FirstOrDefault(x => x.Type == "IdUsuario").Value;
+                var id = identity.Claims.FirstOrDefault(x => x.Type == "Correo").Value;
 
                 //var idd = Int32.Parse(id);
                 

@@ -1,17 +1,3 @@
-C:\Proyectos\Deleite\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.deps.json
-C:\Proyectos\Deleite\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.runtimeconfig.json
-C:\Proyectos\Deleite\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.dll
-C:\Proyectos\Deleite\Deleite.Entity\bin\Debug\net6.0\ref\Deleite.Entity.dll
-C:\Proyectos\Deleite\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.pdb
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.csproj.AssemblyReference.cache
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.AssemblyInfoInputs.cache
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.AssemblyInfo.cs
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.csproj.CoreCompileInputs.cache
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.dll
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\ref\Deleite.Entity.dll
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.pdb
-C:\Proyectos\Deleite\Deleite.Entity\obj\Debug\net6.0\Deleite.Entity.genruntimeconfig.cache
 C:\Proyectos\DeleiteApi\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.deps.json
 C:\Proyectos\DeleiteApi\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.runtimeconfig.json
 C:\Proyectos\DeleiteApi\Deleite.Entity\bin\Debug\net6.0\Deleite.Entity.dll

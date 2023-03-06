@@ -1,3 +1,4 @@
+using System.Xml;
 using System.ComponentModel;
 using Deleite.Dal.DBContext;
 using Deleite.Dal.Interfaces;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Deleite.Entity.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Deleite.Entity.DtoModels;
 
 namespace Deleite.Dal.Implementacion
 {
@@ -27,10 +28,26 @@ namespace Deleite.Dal.Implementacion
             .FirstOrDefaultAsync(x => x.Nombre == u.Nombre && x.Contraseña == u.Contraseña);
             return data;
         }
+
+        public async Task<DtoUserLogin> getuserDto(DtoUserLogin u)
+        {
+            var data = await _dbcontext.Usuarios
+            .FirstOrDefaultAsync(x => x.Correo == u.Correo && x.Contraseña == u.Contraseña);
+            if(data !=null){
+            var dto = new DtoUserLogin
+            {
+                Correo = data.Correo== null ? "No se encontro el correo" : data.Correo,
+                Contraseña = data.Contraseña
+            };
+            return dto;
+            }else{
+                throw new Exception("no se encontraron datos");
+            }
+
+        }
         public async Task<Usuario> GetLoginData(string id)
         {
-            var idd = Int64.Parse(id);
-            var data = await _dbcontext.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == idd);
+            var data = await _dbcontext.Usuarios.FirstOrDefaultAsync(x => x.Correo == id);
             return data;
         }
 

@@ -83,6 +83,7 @@ namespace Deleite.Dal.Implementacion
                             {
 
                                 IdProducto = producto.IdProducto,
+                                IdConfirmacionT = false,
                                 IdCategoria = producto.IdCategoria == null ? 1 : producto.IdCategoria,
                                 IdTematica = producto.IdTematica == null ? 1 : producto.IdTematica,
                                 NombreP = producto.NombreP == null ? "N/A" : producto.NombreP,
@@ -126,9 +127,9 @@ namespace Deleite.Dal.Implementacion
                             try
                             {
 
-
-
-                                var nombreImagen = Guid.NewGuid().ToString() + ".png";
+                                var nombreImagen="";
+                                if(producto.ImagenPrincipalchar != null){
+                                nombreImagen = Guid.NewGuid().ToString() + ".png";
                                 // Obtener la ruta donde se guardarán las imágenes.
                                 var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
                                 if (data.ImagenPrincipal != null)
@@ -148,14 +149,16 @@ namespace Deleite.Dal.Implementacion
                                 {
                                     await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
                                 }
+                                }
 
                                 //setear los valores con los nuevos
                                 data.IdCategoria = producto.IdCategoria == null ? 1 : producto.IdCategoria;
+                                data.IdConfirmacionT = true;
                                 data.IdTematica = producto.IdTematica == null ? 1 : producto.IdTematica;
                                 data.NombreP = producto.NombreP == null ? "N/A" : producto.NombreP;
                                 data.DescripcionP = producto.DescripcionP == null ? "N/A" : producto.DescripcionP;
                                 data.Precio = producto.Precio == null ? "N/A" : producto.Precio;
-                                data.ImagenPrincipal = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png") : nombreImagen;
+                                data.ImagenPrincipal = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", data.ImagenPrincipal) : nombreImagen;
                                 data.Popular = producto.Popular == null ? null : producto.Popular;
                                 data.Ingredienteselect = producto.Ingredienteselect == null ? "N/A" : producto.Ingredienteselect;
                                 data.Saludable = producto.Saludable == null ? null : producto.Saludable;

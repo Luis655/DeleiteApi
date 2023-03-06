@@ -38,6 +38,8 @@ public class ProductoController : ControllerBase {
             var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
             var base64Strings = Convert.ToBase64String(bytess);
             var resultado2 = new DtoresultP {
+            IdProducto = item.IdProducto,
+            IdConfirmacionT = item.IdConfirmacionT,
             Base64 = base64Strings,
             Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
             Tipo = "image/png",
@@ -222,6 +224,7 @@ public class ProductoController : ControllerBase {
             result =count
         };
     }
+    
     [HttpPost]
     [Route("Token/{id}")]
     [Authorize]
@@ -231,13 +234,11 @@ public class ProductoController : ControllerBase {
 
         //var rToken = Jwt.validarToken(identity);
         //var rToken = (dynamic) _jwt.validarToken(identity);
-
         Jwt token = new Jwt(_Idbcontext);
         var rToken = token.validarToken(identity);
         
         if(!rToken.success) 
             return rToken;
-
         //Usuario usuario = rToken.result;
         string l = "LUIS";
         if(l != "LUIS")
@@ -249,7 +250,6 @@ public class ProductoController : ControllerBase {
                 result = ""
             };
         }
-
             return new
             {
                 success = true,
