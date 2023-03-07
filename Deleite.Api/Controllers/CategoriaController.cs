@@ -157,7 +157,7 @@ public class CategoriaController : ControllerBase
         if (categoriaToDelete == null)
             return NotFound("La categoria no existe");
 
-        var deleted = await _dbcontext.Eliminar(categoriaToDelete);
+        var deleted = await _dbcontext.EliminarFotoCategiria(categoriaToDelete);
         if (!deleted)
             return Conflict("El registro no pudo ser eliminado");
 

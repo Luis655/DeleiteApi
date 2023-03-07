@@ -32,6 +32,7 @@ namespace Deleite.Dal.Interfaces
         Task<IQueryable<ImagenProducto>> Consultarimgs(Expression<Func<ImagenProducto, bool>> filtro=null);
         Task<bool> borrarimagen(int id);
         Task<bool> borrarimagenProducto(Producto entidad);
+        Task<bool> EliminarFotoCategiria(Categoria entidad);
 
          
     }

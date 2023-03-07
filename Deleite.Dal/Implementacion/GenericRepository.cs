@@ -65,16 +65,19 @@ namespace Deleite.Dal.Implementacion
                     var rutaImagen = Path.Combine(ruta, nombreImagen);
                     using (var stream = new FileStream(rutaImagen, FileMode.Create))
                     {
-                        if(producto.ImagenPrincipalchar == null){
-                        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
-                        var bytes = System.IO.File.ReadAllBytes(rutas);
-                        var base64String = Convert.ToBase64String(bytes);
-                        var imagenBytes = Convert.FromBase64String(base64String);
+                        if (producto.ImagenPrincipalchar == null)
+                        {
+                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+                            var bytes = System.IO.File.ReadAllBytes(rutas);
+                            var base64String = Convert.ToBase64String(bytes);
+                            var imagenBytes = Convert.FromBase64String(base64String);
 
 
-                        await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
-                        }else{
-                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+                            await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
+                        }
+                        else
+                        {
+                            await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
 
                         }
                     }
@@ -131,28 +134,29 @@ namespace Deleite.Dal.Implementacion
                             try
                             {
 
-                                var nombreImagen="";
-                                if(producto.ImagenPrincipalchar != null){
-                                nombreImagen = Guid.NewGuid().ToString() + ".png";
-                                // Obtener la ruta donde se guardarán las imágenes.
-                                var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
-                                if (data.ImagenPrincipal != null)
+                                var nombreImagen = "";
+                                if (producto.ImagenPrincipalchar != null)
                                 {
-                                    var rutaImagenAnterior = Path.Combine(ruta, data.ImagenPrincipal);
-                                    File.Delete(rutaImagenAnterior);
-                                }
-                                // Si la carpeta no existe, crearla.
-                                if (!Directory.Exists(ruta))
-                                {
-                                    Directory.CreateDirectory(ruta);
-                                }
+                                    nombreImagen = Guid.NewGuid().ToString() + ".png";
+                                    // Obtener la ruta donde se guardarán las imágenes.
+                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                                    if (data.ImagenPrincipal != null)
+                                    {
+                                        var rutaImagenAnterior = Path.Combine(ruta, data.ImagenPrincipal);
+                                        File.Delete(rutaImagenAnterior);
+                                    }
+                                    // Si la carpeta no existe, crearla.
+                                    if (!Directory.Exists(ruta))
+                                    {
+                                        Directory.CreateDirectory(ruta);
+                                    }
 
-                                // Guardar la imagen en la ruta.
-                                var rutaImagen = Path.Combine(ruta, nombreImagen);
-                                using (var stream = new FileStream(rutaImagen, FileMode.Create))
-                                {
-                                    await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
-                                }
+                                    // Guardar la imagen en la ruta.
+                                    var rutaImagen = Path.Combine(ruta, nombreImagen);
+                                    using (var stream = new FileStream(rutaImagen, FileMode.Create))
+                                    {
+                                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+                                    }
                                 }
 
                                 //setear los valores con los nuevos
@@ -200,7 +204,7 @@ namespace Deleite.Dal.Implementacion
 
 
 
-                public async Task<DtoCategorias> CrearCategoria(DtoCategorias producto)
+        public async Task<DtoCategorias> CrearCategoria(DtoCategorias producto)
         {
             try
             {
@@ -222,16 +226,19 @@ namespace Deleite.Dal.Implementacion
                     var rutaImagen = Path.Combine(ruta, nombreImagen);
                     using (var stream = new FileStream(rutaImagen, FileMode.Create))
                     {
-                        if(producto.ImagenPrincipalchar == null ||  producto.ImagenPrincipalchar.Length < 1){
-                        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
-                        var bytes = System.IO.File.ReadAllBytes(rutas);
-                        var base64String = Convert.ToBase64String(bytes);
-                        var imagenBytes = Convert.FromBase64String(base64String);
+                        if (producto.ImagenPrincipalchar == null || producto.ImagenPrincipalchar.Length < 1)
+                        {
+                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+                            var bytes = System.IO.File.ReadAllBytes(rutas);
+                            var base64String = Convert.ToBase64String(bytes);
+                            var imagenBytes = Convert.FromBase64String(base64String);
 
 
-                        await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
-                        }else{
-                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+                            await stream.WriteAsync(imagenBytes, 0, imagenBytes.Length);
+                        }
+                        else
+                        {
+                            await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
 
                         }
                     }
@@ -276,28 +283,29 @@ namespace Deleite.Dal.Implementacion
                             try
                             {
 
-                                var nombreImagen="";
-                                if(producto.ImagenPrincipalchar != null){
-                                nombreImagen = Guid.NewGuid().ToString() + ".png";
-                                // Obtener la ruta donde se guardarán las imágenes.
-                                var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
-                                if (data.Imagen != null)
+                                var nombreImagen = "";
+                                if (producto.ImagenPrincipalchar != null)
                                 {
-                                    var rutaImagenAnterior = Path.Combine(ruta, data.Imagen);
-                                    File.Delete(rutaImagenAnterior);
-                                }
-                                // Si la carpeta no existe, crearla.
-                                if (!Directory.Exists(ruta))
-                                {
-                                    Directory.CreateDirectory(ruta);
-                                }
+                                    nombreImagen = Guid.NewGuid().ToString() + ".png";
+                                    // Obtener la ruta donde se guardarán las imágenes.
+                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                                    if (data.Imagen != null)
+                                    {
+                                        var rutaImagenAnterior = Path.Combine(ruta, data.Imagen);
+                                        File.Delete(rutaImagenAnterior);
+                                    }
+                                    // Si la carpeta no existe, crearla.
+                                    if (!Directory.Exists(ruta))
+                                    {
+                                        Directory.CreateDirectory(ruta);
+                                    }
 
-                                // Guardar la imagen en la ruta.
-                                var rutaImagen = Path.Combine(ruta, nombreImagen);
-                                using (var stream = new FileStream(rutaImagen, FileMode.Create))
-                                {
-                                    await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
-                                }
+                                    // Guardar la imagen en la ruta.
+                                    var rutaImagen = Path.Combine(ruta, nombreImagen);
+                                    using (var stream = new FileStream(rutaImagen, FileMode.Create))
+                                    {
+                                        await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
+                                    }
                                 }
                                 data.Nombre = producto.Nombre;
                                 data.Imagen = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", data.Imagen) : nombreImagen;
@@ -334,7 +342,7 @@ namespace Deleite.Dal.Implementacion
 
 
 
-        
+
         public async Task<DtoImagenProducto> AddImageProducto(DtoImagenProducto producto)
         {
             try
@@ -395,6 +403,21 @@ namespace Deleite.Dal.Implementacion
         }
 
         public async Task<bool> Eliminar(TEntity entidad)
+        {
+            try
+            {
+                _dbcontext.Remove(entidad);
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        public async Task<bool> EliminarFotoCategiria(TEntity entidad)
         {
             try
             {
@@ -471,7 +494,24 @@ namespace Deleite.Dal.Implementacion
                 throw new Exception(e.Message);
             }
         }
-
+        public async Task<bool> EliminarFotoCategiria(Categoria entidad)
+        {
+            try
+            {
+                if (entidad.Imagen!=null)
+                {
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", entidad.Imagen);
+                    File.Delete(rutaImagen);
+                }
+                _dbcontext.Remove(entidad);
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<bool> borrarimagenProducto(Producto entidad)
         {
             try
