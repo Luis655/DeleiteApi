@@ -92,7 +92,7 @@ namespace Deleite.Dal.Implementacion
                                 IdProducto = producto.IdProducto,
                                 IdConfirmacionT = false,
                                 IdCategoria = producto.IdCategoria == null ? 1 : producto.IdCategoria,
-                                IdTematica = producto.IdTematica == null ? 1 : producto.IdTematica,
+                                IdTematica = producto.IdTematica == null ? 23 : producto.IdTematica,
                                 NombreP = producto.NombreP == null ? "N/A" : producto.NombreP,
                                 DescripcionP = producto.DescripcionP == null ? "N/A" : producto.DescripcionP,
                                 Precio = producto.Precio == null ? "N/A" : producto.Precio,
@@ -469,7 +469,7 @@ namespace Deleite.Dal.Implementacion
         }
         public async Task<IQueryable<ImagenProducto>> Consultarimgs(Expression<Func<ImagenProducto, bool>> filtro = null)
         {
-            IQueryable<ImagenProducto> queryEntidad = filtro == null ? _dbcontext.Set<ImagenProducto>() : _dbcontext.Set<ImagenProducto>().Where(filtro);
+            IQueryable<ImagenProducto> queryEntidad = filtro == null ? _dbcontext.Set<ImagenProducto>() : _dbcontext.Set<ImagenProducto>().Include(x => x.IdProductoNavigation).Include(x=>x.IdProductoNavigation.IdTematicaNavigation).Include(x=>x.IdProductoNavigation.IdCategoriaNavigation).Where(filtro);
             return queryEntidad;
         }
 
