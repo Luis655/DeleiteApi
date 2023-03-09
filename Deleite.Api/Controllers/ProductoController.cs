@@ -104,13 +104,31 @@ public class ProductoController : ControllerBase {
         List<resultado> resultados = new List<resultado>();
         foreach (var item in result)
         {
+
+
+            var rutasNotExist = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
             var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.NombreFoto);
-            var bytess = System.IO.File.ReadAllBytes(rutas);
+
+            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutasNotExist);
             var base64Strings = Convert.ToBase64String(bytess);
+
+            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.IdProductoNavigation.ImagenPrincipal);
+            var bytess2 = System.IO.File.Exists(rutas2) ? System.IO.File.ReadAllBytes(rutas2) : System.IO.File.ReadAllBytes(rutasNotExist);
+            var base64Strings2 = Convert.ToBase64String(bytess2);
+
             var resultado2 = new resultado {
+            Base64Origihal = base64Strings2,
             Base64 = base64Strings,
             Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
-            Tipo = "image/png"
+            Tipo = "image/png",
+            NombreP = item.IdProductoNavigation.NombreP,
+            DescripcionP = item.IdProductoNavigation.DescripcionP,
+            Precio = item.IdProductoNavigation.Precio,
+            categoria = item.IdProductoNavigation.IdCategoriaNavigation.Nombre,
+            tematica = item.IdProductoNavigation.IdTematicaNavigation.NombreT,
+            Popular = item.IdProductoNavigation.Popular,
+            Ingredienteselect = item.IdProductoNavigation.Ingredienteselect,
+            Saludable = item.IdProductoNavigation.Saludable
             };
 
             resultados.Add(resultado2);
