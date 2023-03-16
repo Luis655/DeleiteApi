@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using Deleite.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -46,6 +47,8 @@ builder.Services.AddSwaggerGen(c =>{
 });
 
 
+
+
 builder.Services.InyectarDependencia(builder.Configuration);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddCors(options =>
@@ -86,8 +89,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-
 }
+    app.UseDeveloperExceptionPage();
+
+    var staticFilesOptions = new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(app.Environment.ContentRootPath,"wwwroot")
+        )
+    };
+
+    app.UseStaticFiles(staticFilesOptions);
+
     app.UseSwagger();
     app.UseSwaggerUI();
 

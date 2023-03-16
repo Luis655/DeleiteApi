@@ -85,3 +85,4 @@ C:\Proyectos\DeleiteApi\Deleite.Api\obj\Debug\net6.0\ref\Deleite.Api.dll
 C:\Proyectos\DeleiteApi\Deleite.Api\obj\Debug\net6.0\Deleite.Api.pdb
 C:\Proyectos\DeleiteApi\Deleite.Api\obj\Debug\net6.0\Deleite.Api.genruntimeconfig.cache
 C:\Proyectos\DeleiteApi\Deleite.Api\bin\Debug\net6.0\FluentValidation.dll
+C:\Proyectos\DeleiteApi\Deleite.Api\bin\Debug\net6.0\Deleite.Api.staticwebassets.runtime.json

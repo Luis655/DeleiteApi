@@ -16,11 +16,13 @@ namespace Deleite.Api.Controllers;
 [ApiController] 
 [Route("api/[controller]")] 
 public class ProductoController : ControllerBase {
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
     private readonly IGenericRepository<Producto> _dbcontext; 
     private readonly IHttpContextAccessor _httpContext; 
     private readonly ILoginToken _Idbcontext; 
-    public ProductoController(IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
+    public ProductoController(IWebHostEnvironment hostingEnvironment, IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
+         _hostingEnvironment = hostingEnvironment;
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _Idbcontext = Idbcontext;
@@ -29,19 +31,25 @@ public class ProductoController : ControllerBase {
     [Route("get")]
     public async Task<IActionResult> getAll(){
         var result = await _dbcontext.getAll();
+        var host = _httpContext.HttpContext.Request.Host.Value;
+
         List<DtoresultP> resultados = new List<DtoresultP>();
         foreach (var item in result)
         {
-            var rutas = item.ImagenPrincipal != null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.ImagenPrincipal) : Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
-            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+            var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.ImagenPrincipal);
+            var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+            var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
 
-            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
-            var base64Strings = Convert.ToBase64String(bytess);
+
+            //var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "imagenPredetermindad.png");
+            //var urlFoto = Url.Content($"~/{"imagenPredetermindad.png"}");
+            //var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
+            //var base64Strings = Convert.ToBase64String(bytess);
             var resultado2 = new DtoresultP {
             IdProducto = item.IdProducto,
             IdConfirmacionT = item.IdConfirmacionT,
-            Base64 = base64Strings,
-            Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
+            Base64 = "https://" + host + urlFoto,
+            Nombre = urlFoto,
             Tipo = "image/png",
             NombreP=item.NombreP,
             DescripcionP=item.DescripcionP,
@@ -68,7 +76,7 @@ public class ProductoController : ControllerBase {
     public async Task<IActionResult> mostrarimagenes(){
 
 
-        var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "34567154-7ab3-456b-90b6-0eb1ba52ea96.png");
+        var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "34567154-7ab3-456b-90b6-0eb1ba52ea96.png");
         var bytes = System.IO.File.ReadAllBytes(ruta);
         var base64String = Convert.ToBase64String(bytes);
         var resultado = new {
@@ -101,24 +109,24 @@ public class ProductoController : ControllerBase {
     {
         
         var result = await _dbcontext.Consultarimgs(x => x.IdProducto == id);
+        var host = _httpContext.HttpContext.Request.Host.Value;
+
         List<resultado> resultados = new List<resultado>();
         foreach (var item in result)
         {
 
 
-            var rutasNotExist = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
-            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.NombreFoto);
+            var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.NombreFoto);
+            var imagenExistePrincipal = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.IdProductoNavigation.ImagenPrincipal);
 
-            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutasNotExist);
-            var base64Strings = Convert.ToBase64String(bytess);
-
-            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.IdProductoNavigation.ImagenPrincipal);
-            var bytess2 = System.IO.File.Exists(rutas2) ? System.IO.File.ReadAllBytes(rutas2) : System.IO.File.ReadAllBytes(rutasNotExist);
-            var base64Strings2 = Convert.ToBase64String(bytess2);
+            var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+           
+            var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.NombreFoto}") : Url.Content($"~/imagenPredetermindad.png");
+            var urlFotoPrincipal = System.IO.File.Exists(imagenExistePrincipal) ? Url.Content($"~/{item.IdProductoNavigation.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
 
             var resultado2 = new resultado {
-            Base64Origihal = base64Strings2,
-            Base64 = base64Strings,
+            Base64Origihal = "https://" + host + urlFotoPrincipal,
+            Base64 ="https://" + host + urlFoto,
             Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
             Tipo = "image/png",
             NombreP = item.IdProductoNavigation.NombreP,
@@ -234,7 +242,7 @@ public class ProductoController : ControllerBase {
     [HttpGet]
     [Route("fotos")]
     public dynamic NumeroDeFotos() {
-        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+        var rutas = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
         int count = Directory.GetFiles(rutas).Length;
         return new {
             succes = true,

@@ -54,7 +54,7 @@ namespace Deleite.Dal.Implementacion
                     // Generar un nombre único para la imagen.
                     var nombreImagen = Guid.NewGuid().ToString() + ".png";
                     // Obtener la ruta donde se guardarán las imágenes.
-                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                     Console.WriteLine(ruta);
                     // Si la carpeta no existe, crearla.
                     if (!Directory.Exists(ruta))
@@ -67,7 +67,7 @@ namespace Deleite.Dal.Implementacion
                     {
                         if (producto.ImagenPrincipalchar == null)
                         {
-                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
                             var bytes = System.IO.File.ReadAllBytes(rutas);
                             var base64String = Convert.ToBase64String(bytes);
                             var imagenBytes = Convert.FromBase64String(base64String);
@@ -96,7 +96,7 @@ namespace Deleite.Dal.Implementacion
                                 NombreP = producto.NombreP == null ? "N/A" : producto.NombreP,
                                 DescripcionP = producto.DescripcionP == null ? "N/A" : producto.DescripcionP,
                                 Precio = producto.Precio == null ? "N/A" : producto.Precio,
-                                ImagenPrincipal = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png") : nombreImagen,
+                                ImagenPrincipal = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png") : nombreImagen,
                                 Popular = producto.Popular == null ? false : producto.Popular,
                                 Ingredienteselect = producto.Ingredienteselect == null ? "N/A" : producto.Ingredienteselect,
                                 Saludable = producto.Saludable == null ? false : producto.Saludable,
@@ -139,7 +139,7 @@ namespace Deleite.Dal.Implementacion
                                 {
                                     nombreImagen = Guid.NewGuid().ToString() + ".png";
                                     // Obtener la ruta donde se guardarán las imágenes.
-                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                                     if (data.ImagenPrincipal != null)
                                     {
                                         var rutaImagenAnterior = Path.Combine(ruta, data.ImagenPrincipal);
@@ -166,7 +166,7 @@ namespace Deleite.Dal.Implementacion
                                 data.NombreP = producto.NombreP == null ? "N/A" : producto.NombreP;
                                 data.DescripcionP = producto.DescripcionP == null ? "N/A" : producto.DescripcionP;
                                 data.Precio = producto.Precio == null ? "N/A" : producto.Precio;
-                                data.ImagenPrincipal = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", data.ImagenPrincipal) : nombreImagen;
+                                data.ImagenPrincipal = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", data.ImagenPrincipal) : nombreImagen;
                                 data.Popular = producto.Popular == null ? null : producto.Popular;
                                 data.Ingredienteselect = producto.Ingredienteselect == null ? "N/A" : producto.Ingredienteselect;
                                 data.Saludable = producto.Saludable == null ? null : producto.Saludable;
@@ -215,7 +215,7 @@ namespace Deleite.Dal.Implementacion
                     // Generar un nombre único para la imagen.
                     var nombreImagen = Guid.NewGuid().ToString() + ".png";
                     // Obtener la ruta donde se guardarán las imágenes.
-                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                     Console.WriteLine(ruta);
                     // Si la carpeta no existe, crearla.
                     if (!Directory.Exists(ruta))
@@ -228,7 +228,7 @@ namespace Deleite.Dal.Implementacion
                     {
                         if (producto.ImagenPrincipalchar == null || producto.ImagenPrincipalchar.Length < 1)
                         {
-                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
+                            var rutas = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
                             var bytes = System.IO.File.ReadAllBytes(rutas);
                             var base64String = Convert.ToBase64String(bytes);
                             var imagenBytes = Convert.FromBase64String(base64String);
@@ -252,7 +252,7 @@ namespace Deleite.Dal.Implementacion
 
                                 IdCategoria = producto.IdCategoria,
                                 Nombre = producto.Nombre,
-                                Imagen = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png") : nombreImagen
+                                Imagen = nombreImagen == null ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png") : nombreImagen
                             };
                             _dbcontext.Set<Categoria>().Add(nuevaCategoria);
                             await _dbcontext.SaveChangesAsync();
@@ -288,7 +288,7 @@ namespace Deleite.Dal.Implementacion
                                 {
                                     nombreImagen = Guid.NewGuid().ToString() + ".png";
                                     // Obtener la ruta donde se guardarán las imágenes.
-                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                                     if (data.Imagen != null)
                                     {
                                         var rutaImagenAnterior = Path.Combine(ruta, data.Imagen);
@@ -308,7 +308,7 @@ namespace Deleite.Dal.Implementacion
                                     }
                                 }
                                 data.Nombre = producto.Nombre;
-                                data.Imagen = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", data.Imagen) : nombreImagen;
+                                data.Imagen = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", data.Imagen) : nombreImagen;
                                 //gusradr los cambios en la base de datos
                                 _dbcontext.SaveChanges();
                                 transaction.Commit();
@@ -354,7 +354,7 @@ namespace Deleite.Dal.Implementacion
                     // Generar un nombre único para la imagen.
                     var nombreImagen = Guid.NewGuid().ToString() + ".png";
                     // Obtener la ruta donde se guardarán las imágenes.
-                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "fotos");
+                    var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                     Console.WriteLine(ruta);
                     // Si la carpeta no existe, crearla.
                     if (!Directory.Exists(ruta))
@@ -480,7 +480,7 @@ namespace Deleite.Dal.Implementacion
                 var entidad = await _dbcontext.ImagenProductos.Where(x => x.IdProducto == id).ToListAsync();
                 foreach (var item in entidad)
                 {
-                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.NombreFoto);
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", item.NombreFoto);
                     File.Delete(rutaImagen);
                 }
 
@@ -500,7 +500,7 @@ namespace Deleite.Dal.Implementacion
             {
                 if (entidad.Imagen!=null)
                 {
-                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", entidad.Imagen);
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", entidad.Imagen);
                     File.Delete(rutaImagen);
                 }
                 _dbcontext.Remove(entidad);
@@ -518,7 +518,7 @@ namespace Deleite.Dal.Implementacion
             {
                 if (entidad.ImagenPrincipal != null)
                 {
-                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "fotos", entidad.ImagenPrincipal);
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", entidad.ImagenPrincipal);
                     File.Delete(rutaImagen);
                 }
                 _dbcontext.Remove(entidad);

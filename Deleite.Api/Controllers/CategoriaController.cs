@@ -67,18 +67,29 @@ public class CategoriaController : ControllerBase
     [Route("getCategorias")]
     public async Task<IActionResult> getAll(){
         var result = await _dbcontext.getAllProductos();
+        var host = _httpContext.HttpContext.Request.Host.Value;
+
         List<DtoImagenesCategorias> resultados = new List<DtoImagenesCategorias>();
         foreach (var item in result)
         {
-            var rutas = item.Imagen != null ? Path.Combine(Directory.GetCurrentDirectory(), "fotos", item.Imagen) : Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
-            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "fotos", "imagenPredetermindad.png");
 
+
+            var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.Imagen);
+            var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+            var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
+
+
+
+
+            /*var rutas = item.Imagen != null ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", item.Imagen) : Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
             var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
-            var base64Strings = Convert.ToBase64String(bytess);
+            var base64Strings = Convert.ToBase64String(bytess);*/
+
             var resultado2 = new DtoImagenesCategorias {
             
             IdCategoria = item.IdCategoria,
-            Base64 =base64Strings,
+            Base64 = "https://" + host + urlFoto,
             Nombre = item.Imagen,
             Tipo = "image/png",
             Imagen = item.Imagen,
