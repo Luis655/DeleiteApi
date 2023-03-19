@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C5O+jIpcrKo7AkINrAxdZi7GFSeepMw7Iy+haGnr23o=",
+  "Hash": "gIb8Z7VSAP849iOkFx8mBi6//LPFbJ18rQ530GCrbMI=",
   "Source": "Deleite.Api",
   "BasePath": "_content/Deleite.Api",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Deleite.Api\\wwwroot",
       "Source": "Deleite.Api",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\imagenPredetermindad.png",
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\imagenPredetermindad.png",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "imagenPredetermindad.png",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\imagenPredetermindad.png"
     },
     {
-      "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\muertos.jpg",
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\muertos.jpg",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "muertos.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\muertos.jpg"
     },
     {
-      "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\yodabb.jpg",
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\yodabb.jpg",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "yodabb.jpg",
       "AssetKind": "All",

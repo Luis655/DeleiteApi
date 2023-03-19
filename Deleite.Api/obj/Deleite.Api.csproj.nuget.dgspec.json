@@ -1,39 +1,41 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj": {}
+    "C:\\Deleite\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj": {
+    "C:\\Deleite\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj",
+        "projectUniqueName": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj",
         "projectName": "Deleite.Api",
-        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj",
-        "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\obj\\",
+        "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\Deleite.Api.csproj",
+        "packagesPath": "C:\\Users\\Igniter\\.nuget\\packages\\",
+        "outputPath": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igniter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj"
               },
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
               },
-              "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj"
               }
             }
           }
@@ -81,7 +83,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -93,37 +96,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
+    "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
+        "projectUniqueName": "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
         "projectName": "Deleite.Bll",
-        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
-        "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\obj\\",
+        "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj",
+        "packagesPath": "C:\\Users\\Igniter\\.nuget\\packages\\",
+        "outputPath": "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igniter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
               },
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
               }
             }
           }
@@ -149,7 +154,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -158,34 +164,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+    "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
+        "projectUniqueName": "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
         "projectName": "Deleite.Dal",
-        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
-        "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\obj\\",
+        "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj",
+        "packagesPath": "C:\\Users\\Igniter\\.nuget\\packages\\",
+        "outputPath": "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igniter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj"
               }
             }
           }
@@ -211,7 +219,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -220,27 +229,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
+    "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
+        "projectUniqueName": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
         "projectName": "Deleite.Entity",
-        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
-        "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Entity\\obj\\",
+        "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\Deleite.Entity.csproj",
+        "packagesPath": "C:\\Users\\Igniter\\.nuget\\packages\\",
+        "outputPath": "C:\\Deleite\\DeleiteApi\\Deleite.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igniter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -279,7 +290,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -288,37 +300,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {
+    "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
+        "projectUniqueName": "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
         "projectName": "Deleite.IOC",
-        "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
-        "packagesPath": "C:\\Users\\Luiss\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\DeleiteApi\\Deleite.IOC\\obj\\",
+        "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\Deleite.IOC.csproj",
+        "packagesPath": "C:\\Users\\Igniter\\.nuget\\packages\\",
+        "outputPath": "C:\\Deleite\\DeleiteApi\\Deleite.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igniter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Bll\\Deleite.Bll.csproj"
               },
-              "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
-                "projectPath": "C:\\Proyectos\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
+              "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj": {
+                "projectPath": "C:\\Deleite\\DeleiteApi\\Deleite.Dal\\Deleite.Dal.csproj"
               }
             }
           }
@@ -338,7 +352,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -347,7 +362,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
