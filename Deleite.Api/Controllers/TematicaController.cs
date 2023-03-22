@@ -28,27 +28,35 @@ public class TematicaController : ControllerBase
         var result = await _dbcontext.ObtenerTodos();
         return Ok(result);
     }
-    [HttpGet]
-    [Route("tematica/productos")]
 
-    public async Task<ActionResult> GetTematicaConProductos()
-    {
-        var result = await deleitebdContext.Tematicas
-            .Include(c => c.Productos)   
-               .ToListAsync();
-        return Ok(result);
-    }
 
     [HttpGet]
-    [Route("{id}")]
-    public async Task<ActionResult<Tematica>> GetByFilter(int id)
+    [Route("{id:int}")]
+
+    public async Task<ActionResult> GetTematicaConProductos(int id)
     {
-        var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
-        if (result == null)
+        var tematica = await deleitebdContext.Tematicas
+            .Include(t => t.Productos)
+           .FirstOrDefaultAsync(t => t.IdTematica == id);
+
+        if (tematica == null)
+        {
             return NotFound();
-        return Ok(result);
-
+        }
+        return Ok(tematica);
     }
+
+
+    //[HttpGet]
+    //[Route("{id}")]
+    //public async Task<ActionResult<Tematica>> GetByFilter(int id)
+    //{
+    //    var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
+    //    if (result == null)
+    //        return NotFound();
+    //    return Ok(result);
+
+    //}
 
     [HttpPost]
     [Route("create")]

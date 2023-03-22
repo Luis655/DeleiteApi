@@ -35,27 +35,33 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("categoria/productos")]
+    [Route("{id:int}")]
 
-    public async Task<ActionResult> GetCategoriaConProductos()
+    public async Task<ActionResult> GetCategoriaConProductos(int id)
     {
-        var result = await deleitebdContext.Categorias
+        var categoria = await deleitebdContext.Categorias
             .Include(c => c.Productos)
-             .ThenInclude(p => p.IdTematicaNavigation)
-               .ToListAsync();
-        return Ok(result);
-    }
+                .ThenInclude(c => c.IdTematicaNavigation)
+           .FirstOrDefaultAsync(t => t.IdCategoria == id);
 
-    [HttpGet]
-    [Route("{id}")]
-    public async Task<ActionResult<Categoria>> GetByFilter(int id)
-    {
-        var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
-        if (result == null)
+        if (categoria == null)
+        {
             return NotFound();
-        return Ok(result);
-
+        }
+        return Ok(categoria);
     }
+
+
+    //[HttpGet]
+    //[Route("{id}")]
+    //public async Task<ActionResult<Categoria>> GetByFilter(int id)
+    //{
+    //    var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+    //    if (result == null)
+    //        return NotFound();
+    //    return Ok(result);
+
+    //}
 
 
 
