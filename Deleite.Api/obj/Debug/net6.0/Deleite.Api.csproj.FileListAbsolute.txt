@@ -179,3 +179,5 @@ C:\Deleite\DeleiteApi\Deleite.Api\obj\Debug\net6.0\refint\Deleite.Api.dll
 C:\Deleite\DeleiteApi\Deleite.Api\obj\Debug\net6.0\Deleite.Api.pdb
 C:\Deleite\DeleiteApi\Deleite.Api\obj\Debug\net6.0\Deleite.Api.genruntimeconfig.cache
 C:\Deleite\DeleiteApi\Deleite.Api\obj\Debug\net6.0\ref\Deleite.Api.dll
+C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\AutoMapper.dll
+C:\Deleite\DeleiteApi\Deleite.Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

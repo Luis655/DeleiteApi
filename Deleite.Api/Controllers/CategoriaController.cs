@@ -3,6 +3,8 @@ using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using Deleite.Entity.DtoModels;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace Deleite.Api.Controllers;
 
@@ -13,31 +15,16 @@ public class CategoriaController : ControllerBase
 
     private readonly IGenericRepository<Categoria> _dbcontext;
     private readonly IHttpContextAccessor _httpContext;
-    public CategoriaController(IGenericRepository<Categoria> dbcontext, IHttpContextAccessor httpContext)
+    private readonly DeleitebdContext deleitebdContext;
+    private readonly IMapper mapper;
+
+    public CategoriaController(IGenericRepository<Categoria> dbcontext, IHttpContextAccessor httpContext, DeleitebdContext deleitebdContext, IMapper mapper)
     {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
+        this.deleitebdContext = deleitebdContext;
+        this.mapper = mapper;
     }
-
-    /*[HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Ok("200");
-    }*/
-    /**
-    *
-    * Controller Categorias
-    *
-    * This is for the metods of Categorias of products
-    * 
-    * @package	.net 6 webapi
-    * @category	controller
-    * @author    luis macias <luissmh150@gmail.com>
-    * @link      /
-    * @param     @Categorias...
-    * @return    url...
-    *
-    */
 
     [HttpGet]
     [Route("getall")]
@@ -48,24 +35,33 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
+    [Route("categoria/productos")]
+
+    public async Task<ActionResult> GetCategoriaConProductos()
+    {
+        var result = await deleitebdContext.Categorias
+            .Include(c => c.Productos)
+             .ThenInclude(p => p.IdTematicaNavigation)
+               .ToListAsync();
+        return Ok(result);
+    }
+
+    [HttpGet]
     [Route("{id}")]
     public async Task<ActionResult<Categoria>> GetByFilter(int id)
     {
         var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
-        if( result == null)
+        if (result == null)
             return NotFound();
         return Ok(result);
-      
+
     }
 
 
 
-
-
-
-  [HttpGet]
+    [HttpGet]
     [Route("getCategorias")]
-    public async Task<IActionResult> getAll(){
+    public async Task<IActionResult> getAll() {
         var result = await _dbcontext.getAllProductos();
         var host = _httpContext.HttpContext.Request.Host.Value;
 
@@ -78,22 +74,14 @@ public class CategoriaController : ControllerBase
             var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
             var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
 
-
-
-
-            /*var rutas = item.Imagen != null ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", item.Imagen) : Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
-            var rutas2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
-            var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
-            var base64Strings = Convert.ToBase64String(bytess);*/
-
             var resultado2 = new DtoImagenesCategorias {
-            
-            IdCategoria = item.IdCategoria,
-            Base64 = "https://" + host + urlFoto,
-            Nombre = item.Imagen,
-            Tipo = "image/png",
-            Imagen = item.Imagen,
-            NombreCategoria = item.Nombre
+
+                IdCategoria = item.IdCategoria,
+                Base64 = "https://" + host + urlFoto,
+                Nombre = item.Imagen,
+                Tipo = "image/png",
+                Imagen = item.Imagen,
+                NombreCategoria = item.Nombre
             };
 
             resultados.Add(resultado2);
@@ -101,9 +89,6 @@ public class CategoriaController : ControllerBase
         }
         return Ok(resultados);
     }
-
-
-
 
 
     [HttpPost]
@@ -115,23 +100,7 @@ public class CategoriaController : ControllerBase
         var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/artesania/{createadd.IdCategoria}";
         return Created(result, createadd.IdCategoria);
     }
-    /* [HttpPut]
-     [Route("update/{id}")]
-     public async Task<IActionResult> Editar(int id, [FromBody] Categoria categoria)
-     {
-         var categoriaToUpdate = await _dbcontext.Obtener(x => x.IdCategoria == id);
-         if (categoriaToUpdate == null)
-             return NotFound("La categoria no existe");
-
-         categoriaToUpdate.IdCategoria = categoria.IdCategoria;
-
-         var updated = await _dbcontext.Editar(categoriaToUpdate);
-         if (!updated)
-             return Conflict("El registro no pudo ser actualizado");
-
-         return NoContent();
-     }*/
-
+    
     [HttpPut]
     [Route("{id}")]
     public async Task<ActionResult> Update(int id, [FromBody] Categoria categoria)

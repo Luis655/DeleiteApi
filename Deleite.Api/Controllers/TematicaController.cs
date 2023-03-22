@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Deleite.Api.Controllers;
 
 [ApiController]
@@ -10,10 +12,13 @@ public class TematicaController : ControllerBase
 
     private readonly IGenericRepository<Tematica> _dbcontext;
     private readonly IHttpContextAccessor _httpContext;
-    public TematicaController(IGenericRepository<Tematica> dbcontext, IHttpContextAccessor httpContext)
+    private readonly DeleitebdContext deleitebdContext;
+
+    public TematicaController(IGenericRepository<Tematica> dbcontext, IHttpContextAccessor httpContext, DeleitebdContext deleitebdContext)
     {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
+        this.deleitebdContext = deleitebdContext;
     }
 
     [HttpGet]
@@ -21,6 +26,16 @@ public class TematicaController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var result = await _dbcontext.ObtenerTodos();
+        return Ok(result);
+    }
+    [HttpGet]
+    [Route("categoria/productos")]
+
+    public async Task<ActionResult> GetTematicaConProductos()
+    {
+        var result = await deleitebdContext.Tematicas
+            .Include(c => c.Productos)   
+               .ToListAsync();
         return Ok(result);
     }
 
