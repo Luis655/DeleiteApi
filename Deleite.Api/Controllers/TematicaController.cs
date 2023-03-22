@@ -29,7 +29,7 @@ public class TematicaController : ControllerBase
         return Ok(result);
     }
     [HttpGet]
-    [Route("categoria/productos")]
+    [Route("tematica/productos")]
 
     public async Task<ActionResult> GetTematicaConProductos()
     {
