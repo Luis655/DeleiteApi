@@ -68,7 +68,14 @@ public class ProductoController : ControllerBase {
     [Route("get/{id}")]
     public async Task<IActionResult> GetByFilter(int id)
     {
+        var host = _httpContext.HttpContext.Request.Host.Value;
+
+
         var result = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
+        var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.ImagenPrincipal);
+        var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+        var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
+        result.ImagenPrincipal = "https://" + host + urlFoto;
         return Ok(result);
     }
     [HttpGet]
@@ -125,6 +132,7 @@ public class ProductoController : ControllerBase {
             var urlFotoPrincipal = System.IO.File.Exists(imagenExistePrincipal) ? Url.Content($"~/{item.IdProductoNavigation.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
 
             var resultado2 = new resultado {
+            idimgProducto = item.IdimgProducto,
             Base64Origihal = "https://" + host + urlFotoPrincipal,
             Base64 ="https://" + host + urlFoto,
             Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
@@ -164,7 +172,9 @@ public class ProductoController : ControllerBase {
     
     public async Task<IActionResult> create([FromBody] DtoProduco producto)
     {
-
+        try
+        {
+            if(producto!=null){
         var createadd = await _dbcontext.CrearProducto(producto);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
@@ -172,7 +182,16 @@ public class ProductoController : ControllerBase {
         //return Created(result, createadd.IdProducto);
         var response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent("El usuario con el id " + createadd.IdProducto + "fue creado o actualizado");
-        return Ok(createadd);
+        return Ok(response);
+            }else{
+                return Conflict("Agrega valores validos!!");
+            }
+        }
+        catch (Exception e)
+        {
+                throw new Exception(e.Message);
+        }
+
     }
             /**
     *
@@ -193,12 +212,16 @@ public class ProductoController : ControllerBase {
     [HttpPost]
     [Route("addImage")]
     public async Task<IActionResult> AgregarFotosProducto([FromBody] DtoImagenProducto imgs){
+        if(imgs!=null){
          var createadd = await _dbcontext.AddImageProducto(imgs);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
         //var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/Producto/{createadd.IdProducto}";
         //return Created(result, createadd.IdProducto);
         return Ok(createadd);
+        }else{
+            return Conflict("Agrega valores validos!!");
+        }
     }
     /*[HttpDelete]
     [Route("DeleteImg/{id}")]

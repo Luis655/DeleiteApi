@@ -33,6 +33,8 @@ namespace Deleite.Dal.Interfaces
         Task<bool> borrarimagen(int id);
         Task<bool> borrarimagenProducto(Producto entidad);
         Task<bool> EliminarFotoCategiria(Categoria entidad);
+        Task<bool> EliminarFotoProducto(ImagenProducto entidad);
+
 
          
     }

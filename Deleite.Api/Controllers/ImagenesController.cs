@@ -17,13 +17,30 @@ namespace Deleite.Api.Controllers
             
         }
             [HttpDelete]
-            [Route("delete/{id}")]
-            public async Task<IActionResult> borrarImagen(int id){
+            [Route("borrarimagenes/{id}")]
+            public async Task<IActionResult> borrarImagenes(int id){
                 var borrarImagen = await _IgenericRepository.borrarimagen(id);
-                if (!borrarImagen)
+                if (borrarImagen==false){
                    return Ok("no se pudo borrar");
+                }
+                else{
                 return Ok("se borro con exito la imagen");
+                }
                 
+            }
+            [HttpDelete]
+            [Route("borrarimagen/{id}")]
+            public async Task<IActionResult> Eliminar(int id)
+            {
+                var categoriaToDelete = await _IgenericRepository.Obtener(x => x.IdimgProducto == id);
+                if (categoriaToDelete == null)
+                    return NotFound("La imagen no existe");
+
+                var deleted = await _IgenericRepository.EliminarFotoProducto(categoriaToDelete);
+                if (!deleted)
+                    return Conflict("El registro no pudo ser eliminado");
+
+                return NoContent();
             }
         
     }

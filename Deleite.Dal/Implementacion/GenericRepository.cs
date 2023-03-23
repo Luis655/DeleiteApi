@@ -143,7 +143,9 @@ namespace Deleite.Dal.Implementacion
                                     if (data.ImagenPrincipal != null)
                                     {
                                         var rutaImagenAnterior = Path.Combine(ruta, data.ImagenPrincipal);
+                                        if(File.Exists(rutaImagenAnterior)){
                                         File.Delete(rutaImagenAnterior);
+                                        }
                                     }
                                     // Si la carpeta no existe, crearla.
                                     if (!Directory.Exists(ruta))
@@ -157,6 +159,9 @@ namespace Deleite.Dal.Implementacion
                                     {
                                         await stream.WriteAsync(producto.ImagenPrincipalchar, 0, producto.ImagenPrincipalchar.Length);
                                     }
+                                }else{
+                                    if(data.ImagenPrincipal!=null)
+                                        nombreImagen = data.ImagenPrincipal;
                                 }
 
                                 //setear los valores con los nuevos
@@ -166,7 +171,7 @@ namespace Deleite.Dal.Implementacion
                                 data.NombreP = producto.NombreP == null ? "N/A" : producto.NombreP;
                                 data.DescripcionP = producto.DescripcionP == null ? "N/A" : producto.DescripcionP;
                                 data.Precio = producto.Precio == null ? "N/A" : producto.Precio;
-                                data.ImagenPrincipal = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", data.ImagenPrincipal) : nombreImagen;
+                                data.ImagenPrincipal = nombreImagen == "" ? "imagenPredetermindad.png" : nombreImagen;
                                 data.Popular = producto.Popular == null ? null : producto.Popular;
                                 data.Ingredienteselect = producto.Ingredienteselect == null ? "N/A" : producto.Ingredienteselect;
                                 data.Saludable = producto.Saludable == null ? null : producto.Saludable;
@@ -180,7 +185,7 @@ namespace Deleite.Dal.Implementacion
                             catch (Exception ex)
                             {
                                 transaction.Rollback();
-                                throw new Exception("este error sucedio en GenericRepository en la linea 173" + ex.Message);
+                                throw new Exception("este error sucedio debido a un fallo en las rutas de la aplicacion" + ex.Message);
                             }
                         }
                     }
@@ -478,6 +483,7 @@ namespace Deleite.Dal.Implementacion
             try
             {
                 var entidad = await _dbcontext.ImagenProductos.Where(x => x.IdProducto == id).ToListAsync();
+                if(entidad.Count > 0){
                 foreach (var item in entidad)
                 {
                     var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", item.NombreFoto);
@@ -485,13 +491,34 @@ namespace Deleite.Dal.Implementacion
                 }
 
                 //_dbcontext.Remove(entidad);
-                _dbcontext.ImagenProductos.RemoveRange(entidad);
+                 _dbcontext.ImagenProductos.RemoveRange(entidad);
                 await _dbcontext.SaveChangesAsync();
                 return true;
+                }else{
+                    return false;
+                }
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+        public async Task<bool> EliminarFotoProducto(ImagenProducto entidad)
+        {
+            try
+            {
+                if (entidad!=null)
+                {
+                    var rutaImagen = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", entidad.NombreFoto);
+                    File.Delete(rutaImagen);
+                }
+                _dbcontext.Remove(entidad);
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
             }
         }
         public async Task<bool> EliminarFotoCategiria(Categoria entidad)
