@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "7zWE3u6k1tTKWSZd2Odxe7WyceZXd4uDqVi5kFjTyt4=",
+=======
+  "Hash": "gIb8Z7VSAP849iOkFx8mBi6//LPFbJ18rQ530GCrbMI=",
+>>>>>>> ad868050fc0e8ae1af08dab55342995c183e1576
   "Source": "Deleite.Api",
   "BasePath": "_content/Deleite.Api",
   "Mode": "Default",
@@ -10,13 +14,14 @@
     {
       "Name": "Deleite.Api\\wwwroot",
       "Source": "Deleite.Api",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
+<<<<<<< HEAD
       "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\49376ed0-6096-4234-adf0-b69b150cb168.png",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
@@ -137,9 +142,12 @@
     },
     {
       "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\imagenPredetermindad.png",
+=======
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\imagenPredetermindad.png",
+>>>>>>> ad868050fc0e8ae1af08dab55342995c183e1576
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "imagenPredetermindad.png",
       "AssetKind": "All",
@@ -153,10 +161,10 @@
       "OriginalItemSpec": "wwwroot\\imagenPredetermindad.png"
     },
     {
-      "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\muertos.jpg",
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\muertos.jpg",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "muertos.jpg",
       "AssetKind": "All",
@@ -170,6 +178,7 @@
       "OriginalItemSpec": "wwwroot\\muertos.jpg"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\VeracodeC#API.exe",
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
@@ -239,9 +248,12 @@
     },
     {
       "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\yodabb.jpg",
+=======
+      "Identity": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\yodabb.jpg",
+>>>>>>> ad868050fc0e8ae1af08dab55342995c183e1576
       "SourceId": "Deleite.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\",
       "BasePath": "_content/Deleite.Api",
       "RelativePath": "yodabb.jpg",
       "AssetKind": "All",

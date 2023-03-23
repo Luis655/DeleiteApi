@@ -10,26 +10,30 @@ using Deleite.Bll.Jwt;
 using static Deleite.Bll.Jwt.Jwt; 
 using Deleite.Entity.DtoModels;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace Deleite.Api.Controllers;
 
-[ApiController] 
-[Route("api/[controller]")] 
+[ApiController]
+[Route("api/[controller]")]
 public class ProductoController : ControllerBase {
-        private readonly IWebHostEnvironment _hostingEnvironment;
+    private readonly IWebHostEnvironment _hostingEnvironment;
 
-    private readonly IGenericRepository<Producto> _dbcontext; 
-    private readonly IHttpContextAccessor _httpContext; 
-    private readonly ILoginToken _Idbcontext; 
-    public ProductoController(IWebHostEnvironment hostingEnvironment, IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext) {
-         _hostingEnvironment = hostingEnvironment;
+    private readonly IGenericRepository<Producto> _dbcontext;
+    private readonly IHttpContextAccessor _httpContext;
+    private readonly ILoginToken _Idbcontext;
+    private readonly DeleitebdContext deleitebdContext;
+
+    public ProductoController(IWebHostEnvironment hostingEnvironment, IGenericRepository<Producto> dbcontext, IHttpContextAccessor httpContext, ILoginToken Idbcontext, DeleitebdContext deleitebdContext ) {
+        _hostingEnvironment = hostingEnvironment;
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _Idbcontext = Idbcontext;
+        this.deleitebdContext = deleitebdContext;
     }
     [HttpGet]
     [Route("get")]
-    public async Task<IActionResult> getAll(){
+    public async Task<IActionResult> getAll() {
         var result = await _dbcontext.getAll();
         var host = _httpContext.HttpContext.Request.Host.Value;
 
@@ -46,17 +50,17 @@ public class ProductoController : ControllerBase {
             //var bytess = System.IO.File.Exists(rutas) ? System.IO.File.ReadAllBytes(rutas) : System.IO.File.ReadAllBytes(rutas2);
             //var base64Strings = Convert.ToBase64String(bytess);
             var resultado2 = new DtoresultP {
-            IdProducto = item.IdProducto,
-            IdConfirmacionT = item.IdConfirmacionT,
-            Base64 = "https://" + host + urlFoto,
-            Nombre = urlFoto,
-            Tipo = "image/png",
-            NombreP=item.NombreP,
-            DescripcionP=item.DescripcionP,
-            Precio= item.Precio,
-            Ingredienteselect=item.Ingredienteselect,
-            NombreTematica=item.IdTematicaNavigation.NombreT,
-            NombreCategoria=item.IdCategoriaNavigation.Nombre
+                IdProducto = item.IdProducto,
+                IdConfirmacionT = item.IdConfirmacionT,
+                Base64 = "https://" + host + urlFoto,
+                Nombre = urlFoto,
+                Tipo = "image/png",
+                NombreP = item.NombreP,
+                DescripcionP = item.DescripcionP,
+                Precio = item.Precio,
+                Ingredienteselect = item.Ingredienteselect,
+                NombreTematica = item.IdTematicaNavigation.NombreT,
+                NombreCategoria = item.IdCategoriaNavigation.Nombre
             };
 
             resultados.Add(resultado2);
@@ -80,7 +84,7 @@ public class ProductoController : ControllerBase {
     }
     [HttpGet]
     [Route("mostrarimg")]
-    public async Task<IActionResult> mostrarimagenes(){
+    public async Task<IActionResult> mostrarimagenes() {
 
 
         var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "34567154-7ab3-456b-90b6-0eb1ba52ea96.png");
@@ -90,12 +94,12 @@ public class ProductoController : ControllerBase {
             Base64 = base64String,
             Nombre = "3bcddd15-ad6c-4699-a40d-c984e890fb9c.png",
             Tipo = "image/png"
-            };
+        };
 
         return Ok(resultado);
 
     }
-    
+
     /**
     *
     * Controller getallimages
@@ -114,7 +118,7 @@ public class ProductoController : ControllerBase {
     [Route("getimages/{id}")]
     public async Task<IActionResult> getallimages(int id)
     {
-        
+
         var result = await _dbcontext.Consultarimgs(x => x.IdProducto == id);
         var host = _httpContext.HttpContext.Request.Host.Value;
 
@@ -127,7 +131,7 @@ public class ProductoController : ControllerBase {
             var imagenExistePrincipal = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.IdProductoNavigation.ImagenPrincipal);
 
             var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
-           
+
             var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.NombreFoto}") : Url.Content($"~/imagenPredetermindad.png");
             var urlFotoPrincipal = System.IO.File.Exists(imagenExistePrincipal) ? Url.Content($"~/{item.IdProductoNavigation.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
 
@@ -152,21 +156,39 @@ public class ProductoController : ControllerBase {
         }
         return Ok(resultados);
     }
-        /**
-    *
-    * Controller create
-    *
-    * crea un nuevo producto, se puede agregar 1 sola imagen en este controlador
-    * 
-    * @package	.net 6 webapi
-    * @category	controller
-    * @author    luis macias <luissmh150@gmail.com>
-    * @link      /api/Producto/create
-    * @param     @DtoProducto, devuelve un objeto de tipo append en el front y se recibe como [FromForm], 
-    *            con los datos del producto, la imagen se manda como base64.
-    * @return    image base64 json.
-    *
-    */
+    /**
+*
+* Controller create
+*
+* crea un nuevo producto, se puede agregar 1 sola imagen en este controlador
+* 
+* @package	.net 6 webapi
+* @category	controller
+* @author    luis macias <luissmh150@gmail.com>
+* @link      /api/Producto/create
+* @param     @DtoProducto, devuelve un objeto de tipo append en el front y se recibe como [FromForm], 
+*            con los datos del producto, la imagen se manda como base64.
+* @return    image base64 json.
+*
+*/
+
+    [HttpGet("filtrar/nombre")]
+    public async Task<IEnumerable<Producto>> FiltrarNombre(string nombre)
+    {
+        return await deleitebdContext.Productos.Where(
+            p => p.NombreP.Contains(nombre)).ToListAsync();
+    }
+
+    [HttpGet("filtrar/tematica")]
+    public async Task<List<Tematica>> FiltrarTematica(string tematica)
+    {
+        return await deleitebdContext.Tematicas.Where(
+          p => p.NombreT.Contains(tematica)).ToListAsync();
+    }
+
+
+
+
     [HttpPost]
     [Route("create")]
     

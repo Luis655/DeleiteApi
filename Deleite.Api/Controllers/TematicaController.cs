@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Deleite.Api.Controllers;
 
 [ApiController]
@@ -10,10 +12,13 @@ public class TematicaController : ControllerBase
 
     private readonly IGenericRepository<Tematica> _dbcontext;
     private readonly IHttpContextAccessor _httpContext;
-    public TematicaController(IGenericRepository<Tematica> dbcontext, IHttpContextAccessor httpContext)
+    private readonly DeleitebdContext deleitebdContext;
+
+    public TematicaController(IGenericRepository<Tematica> dbcontext, IHttpContextAccessor httpContext, DeleitebdContext deleitebdContext)
     {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
+        this.deleitebdContext = deleitebdContext;
     }
 
     [HttpGet]
@@ -24,16 +29,34 @@ public class TematicaController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet]
-    [Route("{id}")]
-    public async Task<ActionResult<Tematica>> GetByFilter(int id)
-    {
-        var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
-        if (result == null)
-            return NotFound();
-        return Ok(result);
 
+    [HttpGet]
+    [Route("{id:int}")]
+
+    public async Task<ActionResult> GetTematicaConProductos(int id)
+    {
+        var tematica = await deleitebdContext.Tematicas
+            .Include(t => t.Productos)
+           .FirstOrDefaultAsync(t => t.IdTematica == id);
+
+        if (tematica == null)
+        {
+            return NotFound();
+        }
+        return Ok(tematica);
     }
+
+
+    //[HttpGet]
+    //[Route("{id}")]
+    //public async Task<ActionResult<Tematica>> GetByFilter(int id)
+    //{
+    //    var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
+    //    if (result == null)
+    //        return NotFound();
+    //    return Ok(result);
+
+    //}
 
     [HttpPost]
     [Route("create")]
