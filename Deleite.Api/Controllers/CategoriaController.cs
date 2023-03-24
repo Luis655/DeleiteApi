@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using Microsoft.AspNetCore.Mvc;
 using Deleite.Dal.Interfaces;
 using Deleite.Entity.Models;
@@ -39,16 +40,42 @@ public class CategoriaController : ControllerBase
 
     public async Task<ActionResult> GetCategoriaConProductos(int id)
     {
-        var categoria = await deleitebdContext.Categorias
-            .Include(c => c.Productos)
-                .ThenInclude(c => c.IdTematicaNavigation)
-           .FirstOrDefaultAsync(t => t.IdCategoria == id);
+        var categoria = await deleitebdContext.Productos
+            .Include(c => c.IdCategoriaNavigation)
+            .Include(c => c.IdTematicaNavigation)
+           .Where(t => t.IdCategoria == id).ToListAsync();
 
         if (categoria == null)
         {
             return NotFound();
         }
-        return Ok(categoria);
+
+        List<DtoresultP> resultados = new List<DtoresultP>();
+        var host = _httpContext.HttpContext.Request.Host.Value;
+        foreach (var item in categoria)
+        {
+            var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.ImagenPrincipal);
+            var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+            var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{item.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
+
+        
+                var resultado2 = new DtoresultP {
+                IdProducto = item.IdProducto,
+                IdConfirmacionT = item.IdConfirmacionT,
+                Base64 = "https://" + host + urlFoto,
+                Nombre = urlFoto,
+                Tipo = "image/png",
+                NombreP = item.NombreP,
+                DescripcionP = item.DescripcionP,
+                Precio = item.Precio,
+                Ingredienteselect = item.Ingredienteselect,
+                NombreTematica = item.IdTematicaNavigation.NombreT,
+                NombreCategoria = item.IdCategoriaNavigation.Nombre
+            };
+             resultados.Add(resultado2);
+
+        }
+        return Ok(resultados);
     }
 
 
