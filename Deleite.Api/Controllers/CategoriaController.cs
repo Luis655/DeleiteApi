@@ -36,7 +36,7 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{productos}")]
+    [Route("productos")]
 
     public async Task<ActionResult> GetCategoriaConProductos(int id)
     {
