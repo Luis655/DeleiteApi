@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\49376ed0-6096-4234-adf0-b69b150cb168.png",
+      "PackagePath": "staticwebassets\\49376ed0-6096-4234-adf0-b69b150cb168.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\4f4d5037-1e66-4eb1-931c-2cfb12734a38.png",
+      "PackagePath": "staticwebassets\\4f4d5037-1e66-4eb1-931c-2cfb12734a38.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\7ad4e273-c988-4fb6-a9a3-d93c08b6cb3e.png",
+      "PackagePath": "staticwebassets\\7ad4e273-c988-4fb6-a9a3-d93c08b6cb3e.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\a713fc64-3a57-46c9-968f-75cb33d45e5b.png",
+      "PackagePath": "staticwebassets\\a713fc64-3a57-46c9-968f-75cb33d45e5b.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\de4f1562-586e-441d-bfcf-48158a6785a0.png",
+      "PackagePath": "staticwebassets\\de4f1562-586e-441d-bfcf-48158a6785a0.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\e3537976-c120-41b7-808a-c4fa455e0efe.png",
+      "PackagePath": "staticwebassets\\e3537976-c120-41b7-808a-c4fa455e0efe.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\imagenPredetermindad.png",
+      "PackagePath": "staticwebassets\\imagenPredetermindad.png"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\muertos.jpg",
+      "PackagePath": "staticwebassets\\muertos.jpg"
+    },
+    {
+      "Id": "C:\\Deleite\\DeleiteApi\\Deleite.Api\\wwwroot\\yodabb.jpg",
+      "PackagePath": "staticwebassets\\yodabb.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Deleite.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Deleite.Api.props",
+      "PackagePath": "build\\Deleite.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Deleite.Api.props",
+      "PackagePath": "buildMultiTargeting\\Deleite.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Deleite.Api.props",
+      "PackagePath": "buildTransitive\\Deleite.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

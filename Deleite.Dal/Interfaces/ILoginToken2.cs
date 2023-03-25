@@ -6,5 +6,6 @@ namespace Deleite.Dal.Interfaces
     public interface ILoginToken2
     {
          Task<Usuario> GetLoginData(int id);
+      
     }
 }

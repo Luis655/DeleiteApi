@@ -20,7 +20,7 @@ namespace Deleite.Dal.Implementacion
         public LoginToken(DeleitebdContext dbcontext)
         {
             _dbcontext = dbcontext;
-            
+
         }
         public async Task<Usuario> GetLogin(Usuario u)
         {
@@ -33,14 +33,14 @@ namespace Deleite.Dal.Implementacion
         {
             var data = await _dbcontext.Usuarios
             .FirstOrDefaultAsync(x => x.Correo == u.Correo && x.Contraseña == u.Contraseña);
-            if(data !=null){
-            var dto = new DtoUserLogin
-            {
-                Correo = data.Correo== null ? "No se encontro el correo" : data.Correo,
-                Contraseña = data.Contraseña
-            };
-            return dto;
-            }else{
+            if (data != null) {
+                var dto = new DtoUserLogin
+                {
+                    Correo = data.Correo == null ? "No se encontro el correo" : data.Correo,
+                    Contraseña = data.Contraseña
+                };
+                return dto;
+            } else {
                 throw new Exception("no se encontraron datos");
             }
 
@@ -50,6 +50,12 @@ namespace Deleite.Dal.Implementacion
             var data = await _dbcontext.Usuarios.FirstOrDefaultAsync(x => x.Correo == id);
             return data;
         }
+
+        public async Task InvalidateToken(string token)
+        {
+            // ... código para invalidar el token ...
+        }
+
 
     }
 }

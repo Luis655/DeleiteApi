@@ -7,6 +7,9 @@ namespace Deleite.Dal.Interfaces
     {
          Task<Usuario> GetLogin(Usuario usuario);
          Task<DtoUserLogin> getuserDto(DtoUserLogin user);
+
+        Task InvalidateToken(string token);
+
         Task<Usuario> GetLoginData(string id);
     }
 }
