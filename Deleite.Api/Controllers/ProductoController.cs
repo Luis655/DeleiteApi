@@ -196,17 +196,22 @@ public class ProductoController : ControllerBase {
     {
         try
         {
-            if(producto!=null){
+        if(producto!=null){
         var createadd = await _dbcontext.CrearProducto(producto);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
-        //var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/Producto/{createadd.IdProducto}";
-        //return Created(result, createadd.IdProducto);
-        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        var result = $"https://{_httpContext.HttpContext.Request.Host.Value}/api/Producto/{createadd.IdProducto}";
+        return Created(result, createadd.IdProducto);
+        /*var response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent("El usuario con el id " + createadd.IdProducto + "fue creado o actualizado");
         return Ok(response);
             }else{
                 return Conflict("Agrega valores validos!!");
+            }*/
+            }
+            else{
+                return Conflict("El registro no pudo ser realizado");
+
             }
         }
         catch (Exception e)
