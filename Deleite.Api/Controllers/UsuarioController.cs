@@ -21,9 +21,12 @@ public class UsuarioController : ControllerBase
     private readonly ILoginToken _dbrepo;
     private readonly IHttpContextAccessor _httpContext;
     private readonly IValidator<DtoUserLogin> _createValidator;
-    public UsuarioController(IGenericRepository<Usuario> dbcontext, ILoginToken dbrepo, IHttpContextAccessor httpContext, IConfiguration configuration, IValidator<DtoUserLogin> CreateValidator)
+    private readonly ILoginToken loginToken;
+
+    public UsuarioController(IGenericRepository<Usuario> dbcontext, ILoginToken dbrepo, IHttpContextAccessor httpContext, 
+        IConfiguration configuration, IValidator<DtoUserLogin> CreateValidator)
     {
-        _createValidator = CreateValidator;
+        _createValidator = CreateValidator;    
         _dbcontext = dbcontext;
         _httpContext = httpContext;
         _configuration = configuration;
@@ -45,18 +48,10 @@ public class UsuarioController : ControllerBase
     {
         var ValidationResult = await _createValidator.ValidateAsync(usuario);
         if(!ValidationResult.IsValid)
-            return UnprocessableEntity(ValidationResult.Errors.Select(x => $"Error: {x.ErrorMessage}"));
-        /*var data = JsonConvert.DeserializeObject<dynamic>(optData.ToString());
-        if (data==null)return new{message="ocurrio un error"};        
-
-        string user = data.Nombre.ToString();
-        string password = data.Contraseña.ToString();*/
+            return UnprocessableEntity(ValidationResult.Errors.Select(x => $"Error: {x.ErrorMessage}"));   
 
         var user = _dbrepo.getuserDto(usuario);
         
-
-        //Usuario usuario = Usuario.DB().Where(x => x.Nombre == user && x.Contraseña == password).FirstOrDefault();
-
         if (user.Result==null)
         {
             return new
@@ -76,7 +71,7 @@ public class UsuarioController : ControllerBase
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                     new Claim("Correo", usuario.Correo.ToString()),
-                    //new Claim("Nombre", usuario.Nombre)
+                    
                 };
 
                 var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key));
@@ -98,6 +93,16 @@ public class UsuarioController : ControllerBase
                     result= new JwtSecurityTokenHandler().WriteToken(token)
                 };
             }
+    }
+
+    [HttpPost]
+    [Route("logout")]
+    public async Task<IActionResult> CerrarSesion()
+    {
+        var token = _httpContext.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        await _dbrepo.InvalidateToken(token);
+
+        return Ok();
     }
 
 

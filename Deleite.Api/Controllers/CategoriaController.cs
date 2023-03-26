@@ -36,7 +36,7 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{id:int}")]
+    [Route("productos")]
 
     public async Task<ActionResult> GetCategoriaConProductos(int id)
     {
@@ -79,16 +79,16 @@ public class CategoriaController : ControllerBase
     }
 
 
-    //[HttpGet]
-    //[Route("{id}")]
-    //public async Task<ActionResult<Categoria>> GetByFilter(int id)
-    //{
-    //    var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
-    //    if (result == null)
-    //        return NotFound();
-    //    return Ok(result);
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<ActionResult<Categoria>> GetByFilter(int id)
+    {
+        var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+        if (result == null)
+            return NotFound();
+        return Ok(result);
 
-    //}
+    }
 
 
 

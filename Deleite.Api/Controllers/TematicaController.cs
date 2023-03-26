@@ -30,8 +30,8 @@ public class TematicaController : ControllerBase
     }
 
 
-    [HttpGet]
-    [Route("{id:int}")]
+     [HttpGet]
+    [Route("productos")]
 
     public async Task<ActionResult> GetTematicaConProductos(int id)
     {
@@ -47,16 +47,16 @@ public class TematicaController : ControllerBase
     }
 
 
-    //[HttpGet]
-    //[Route("{id}")]
-    //public async Task<ActionResult<Tematica>> GetByFilter(int id)
-    //{
-    //    var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
-    //    if (result == null)
-    //        return NotFound();
-    //    return Ok(result);
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<ActionResult<Tematica>> GetByFilter(int id)
+    {
+        var result = await _dbcontext.Obtener(x => x.IdTematica.Equals(id));
+        if (result == null)
+            return NotFound();
+        return Ok(result);
 
-    //}
+    }
 
     [HttpPost]
     [Route("create")]
