@@ -261,7 +261,7 @@ public class ProductoController : ControllerBase {
     }*/
 
 
-        [HttpPut]
+    [HttpGet]
     [Route("veriicarProductos")]
     public async Task<IActionResult> DeleteProductosFalsos()
     {
