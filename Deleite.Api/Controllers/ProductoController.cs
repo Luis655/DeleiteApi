@@ -260,6 +260,17 @@ public class ProductoController : ControllerBase {
         return Ok("imagen borrada con exito");
     }*/
 
+
+        [HttpPut]
+    [Route("veriicarProductos")]
+    public async Task<IActionResult> DeleteProductosFalsos()
+    {
+        var productoToUpdate = await _dbcontext.DeleteFalses();
+        if (productoToUpdate == null)
+            return NotFound("El producto no existe");
+        return Ok("verificado Exitosamente");
+    }
+
     [HttpPut]
     [Route("update/{id}")]
     public async Task<IActionResult> Editar(int id, [FromForm] Producto producto)

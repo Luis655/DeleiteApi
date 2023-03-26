@@ -14,6 +14,7 @@ namespace Deleite.Dal.Interfaces
     {
 
         Task<TEntity> Obtener(Expression<Func<TEntity, bool>> filtro);
+        Task<IQueryable<Producto>> DeleteFalses();
         Task<IQueryable<Producto>> getAll();
         Task<IQueryable<Categoria>> getAllProductos();
 

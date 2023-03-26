@@ -29,6 +29,29 @@ namespace Deleite.Dal.Implementacion
                 throw;
             }
         }
+
+        public async Task<IQueryable<Producto>> DeleteFalses()
+        {
+            try
+            {
+                var producto = await _dbcontext.Productos
+                .AsQueryable<Producto>().AsNoTracking().ToListAsync();
+
+                foreach (var item in producto)
+                {
+                    if(item.IdConfirmacionT==false){
+                        var entidad = await _dbcontext.Productos.Where(x => x.IdProducto == item.IdProducto).FirstOrDefaultAsync();
+                        _dbcontext.Remove(entidad);
+                        await _dbcontext.SaveChangesAsync();
+                    }
+                }
+                return producto.AsQueryable();
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public async Task<TEntity> Crear(TEntity entidad)
         {
             try
