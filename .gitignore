@@ -9,6 +9,45 @@
 *.pdb
 *.cache
 /c/Proyectos/DeleiteApi/Deleite.Api/obj
+Deleite.Api/bin/Debug/net6.0/Deleite.Api.staticwebassets.runtime.json
+Deleite.Api/obj/Debug/net6.0/Deleite.Api.AssemblyInfo.cs
+Deleite.Api/obj/Debug/net6.0/Deleite.Api.csproj.FileListAbsolute.txt
+Deleite.Api/obj/Debug/net6.0/project.razor.json
+Deleite.Api/obj/Debug/net6.0/staticwebassets.build.json
+Deleite.Api/obj/Debug/net6.0/staticwebassets.development.json
+Deleite.Api/obj/Debug/net6.0/staticwebassets.pack.json
+Deleite.Api/obj/Debug/net6.0/staticwebassets/msbuild.Deleite.Api.Microsoft.AspNetCore.StaticWebAssets.props
+ Deleite.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Deleite.Api.props       
+ Deleite.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Deleite.Api.props
+ Deleite.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Deleite.Api.props
+
+ 
+ Deleite.Api/obj/Deleite.Api.csproj.nuget.dgspec.json
+ Deleite.Api/obj/Deleite.Api.csproj.nuget.g.props
+ Deleite.Api/obj/project.assets.json
+ Deleite.Api/obj/staticwebassets.pack.sentinel
+ Deleite.Bll/obj/Debug/net6.0/Deleite.Bll.AssemblyInfo.cs
+ Deleite.Bll/obj/Debug/net6.0/Deleite.Bll.csproj.FileListAbsolute.txt
+ Deleite.Bll/obj/Deleite.Bll.csproj.nuget.dgspec.json
+ Deleite.Bll/obj/Deleite.Bll.csproj.nuget.g.props
+ Deleite.Bll/obj/project.assets.json
+ Deleite.Dal/obj/Debug/net6.0/Deleite.Dal.AssemblyInfo.cs
+ Deleite.Dal/obj/Debug/net6.0/Deleite.Dal.csproj.FileListAbsolute.txt
+ Deleite.Dal/obj/Deleite.Dal.csproj.nuget.dgspec.json
+ Deleite.Dal/obj/Deleite.Dal.csproj.nuget.g.props
+ Deleite.Dal/obj/project.assets.json
+ Deleite.Entity/obj/Debug/net6.0/Deleite.Entity.AssemblyInfo.cs
+ Deleite.Entity/obj/Debug/net6.0/Deleite.Entity.csproj.BuildWithSkipAnalyzers
+ Deleite.Entity/obj/Debug/net6.0/Deleite.Entity.csproj.FileListAbsolute.txt
+ Deleite.Entity/obj/Deleite.Entity.csproj.nuget.dgspec.json
+ Deleite.Entity/obj/Deleite.Entity.csproj.nuget.g.props
+ Deleite.Entity/obj/project.assets.json
+ Deleite.IOC/obj/Debug/net6.0/Deleite.IOC.AssemblyInfo.cs
+ Deleite.IOC/obj/Debug/net6.0/Deleite.IOC.csproj.FileListAbsolute.txt
+ Deleite.IOC/obj/Deleite.IOC.csproj.nuget.dgspec.json
+ Deleite.IOC/obj/Deleite.IOC.csproj.nuget.g.props
+ Deleite.IOC/obj/project.assets.json
+ Deleite.Api/obj/Debug/net6.0/Deleite.Api.MvcApplicationPartsAssemblyInfo.cs
 *.editorconfig
 # Packages 
 ############
