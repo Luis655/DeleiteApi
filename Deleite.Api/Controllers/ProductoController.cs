@@ -160,7 +160,7 @@ public class ProductoController : ControllerBase {
         }
         if(resultados == null)
             return Ok(resultados);
-        return Ok("SIN REGISTROS");
+        return Ok(resultados);
         }else{
             return NotFound();
         }
