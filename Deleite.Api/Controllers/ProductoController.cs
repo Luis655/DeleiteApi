@@ -72,6 +72,8 @@ public class ProductoController : ControllerBase {
     [Route("get/{id}")]
     public async Task<IActionResult> GetByFilter(int id)
     {
+        var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
+        if(resultid!=null){
         var host = _httpContext.HttpContext.Request.Host.Value;
 
 
@@ -81,6 +83,9 @@ public class ProductoController : ControllerBase {
         var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
         result.ImagenPrincipal = "https://" + host + urlFoto;
         return Ok(result);
+        }else{
+            return NotFound();
+        }
     }
     [HttpGet]
     [Route("mostrarimg")]
@@ -118,6 +123,9 @@ public class ProductoController : ControllerBase {
     [Route("getimages/{id}")]
     public async Task<IActionResult> getallimages(int id)
     {
+        var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
+        if(resultid!=null){
+
 
         var result = await _dbcontext.Consultarimgs(x => x.IdProducto == id);
         var host = _httpContext.HttpContext.Request.Host.Value;
@@ -153,6 +161,9 @@ public class ProductoController : ControllerBase {
         if(resultados == null)
             return Ok(resultados);
         return Ok("SIN REGISTROS");
+        }else{
+            return NotFound();
+        }
     }
     /**
 *
@@ -194,7 +205,9 @@ public class ProductoController : ControllerBase {
     {
         try
         {
-        if(producto!=null){
+        var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(producto.IdProducto));
+        
+        if(resultid!=null){
         var createadd = await _dbcontext.CrearProducto(producto);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
@@ -208,7 +221,7 @@ public class ProductoController : ControllerBase {
             }*/
             }
             else{
-                return Conflict("El registro no pudo ser realizado");
+                return NotFound();
 
             }
         }

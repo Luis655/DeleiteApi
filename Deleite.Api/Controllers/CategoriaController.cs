@@ -87,13 +87,16 @@ public class CategoriaController : ControllerBase
     {
          var host = _httpContext.HttpContext.Request.Host.Value;
          var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
-         var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen);
+         var urlFoto =Url.Content($"~/imagenPredetermindad.png");
+        if(result!= null){
          var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
-         var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
-         result.Imagen =  "https://" + host + urlFoto;
-        if (result == null)
-            return NotFound();
+         var imagenExiste = System.IO.File.Exists(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen)) ?  Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen) : imagenPredetermindad;
+         urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
         return Ok(result);
+
+        }
+            return NotFound();
+
 
     }
 
