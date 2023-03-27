@@ -205,9 +205,8 @@ public class ProductoController : ControllerBase {
     {
         try
         {
-        var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(producto.IdProducto));
         
-        if(resultid!=null){
+        if(producto!=null){
         var createadd = await _dbcontext.CrearProducto(producto);
         if (createadd == null)
             return Conflict("El registro no pudo ser realizado");
