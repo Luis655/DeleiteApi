@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 using System.Runtime.InteropServices.ComTypes;
 using Microsoft.AspNetCore.Mvc;
 using Deleite.Dal.Interfaces;
@@ -83,7 +85,12 @@ public class CategoriaController : ControllerBase
     [Route("{id}")]
     public async Task<ActionResult<Categoria>> GetByFilter(int id)
     {
-        var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+         var host = _httpContext.HttpContext.Request.Host.Value;
+         var result = await _dbcontext.Obtener(x => x.IdCategoria.Equals(id));
+         var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen);
+         var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+         var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
+         result.Imagen =  "https://" + host + urlFoto;
         if (result == null)
             return NotFound();
         return Ok(result);

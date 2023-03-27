@@ -125,8 +125,6 @@ public class ProductoController : ControllerBase {
         List<resultado> resultados = new List<resultado>();
         foreach (var item in result)
         {
-
-
             var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.NombreFoto);
             var imagenExistePrincipal = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.IdProductoNavigation.ImagenPrincipal);
 
@@ -150,11 +148,11 @@ public class ProductoController : ControllerBase {
             Ingredienteselect = item.IdProductoNavigation.Ingredienteselect,
             Saludable = item.IdProductoNavigation.Saludable
             };
-
             resultados.Add(resultado2);
-
         }
-        return Ok(resultados);
+        if(resultados == null)
+            return Ok(resultados);
+        return Ok("SIN REGISTROS");
     }
     /**
 *
