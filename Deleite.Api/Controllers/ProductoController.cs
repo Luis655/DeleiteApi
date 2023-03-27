@@ -68,6 +68,26 @@ public class ProductoController : ControllerBase {
         }
         return Ok(resultados);
     }
+
+    [HttpGet]
+    [Route("getById/{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
+        if(resultid!=null){
+        var result = await _dbcontext.obtenerPoducts(id);
+                var host = _httpContext.HttpContext.Request.Host.Value;
+        var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.ImagenPrincipal);
+        var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
+        var urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.ImagenPrincipal}") : Url.Content($"~/imagenPredetermindad.png");
+        result.ImagenPrincipal = "https://"+host+urlFoto;
+        return Ok(result);
+        }
+        else{
+            return NotFound();
+        }
+    }
+
     [HttpGet]
     [Route("get/{id}")]
     public async Task<IActionResult> GetByFilter(int id)

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2VAOxOdwnTWDIXNtHpL5MyezAHxFTco7BjvYhdW7ixA=",
+  "Hash": "QeMnNUxmODAV/b9937LticRak8RuXyK9TJke90W2kI4=",
   "Source": "Deleite.Api",
   "BasePath": "_content/Deleite.Api",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\49376ed0-6096-4234-adf0-b69b150cb168.png"
+    },
+    {
+      "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\497c5a23-b59a-48ec-a8a2-55e07ebcf35c.png",
+      "SourceId": "Deleite.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\",
+      "BasePath": "_content/Deleite.Api",
+      "RelativePath": "497c5a23-b59a-48ec-a8a2-55e07ebcf35c.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\497c5a23-b59a-48ec-a8a2-55e07ebcf35c.png"
     },
     {
       "Identity": "C:\\Proyectos\\DeleiteApi\\Deleite.Api\\wwwroot\\4f4d5037-1e66-4eb1-931c-2cfb12734a38.png",

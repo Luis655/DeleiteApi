@@ -1,3 +1,4 @@
+using System.Resources;
 using System.Linq.Expressions;
 using Deleite.Dal.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -468,6 +469,33 @@ namespace Deleite.Dal.Implementacion
 
 
             return producto.AsQueryable();
+        }
+        public async Task<DtoProduc> obtenerPoducts(int id)
+        {
+
+            var result = await _dbcontext.Productos
+            .Include(x => x.IdCategoriaNavigation)
+            .Include(x => x.IdTematicaNavigation).Where(x => x.IdProducto == id)
+            .AsNoTracking().FirstOrDefaultAsync();
+            
+        var resultado = new DtoProduc
+        {
+            IdProducto =result.IdProducto ==null ? 1 : result.IdProducto,
+            IdCategoria=result.IdCategoria==null ? 1 : result.IdCategoria,
+            IdConfirmacionT=result.IdConfirmacionT == null ? false : result.IdConfirmacionT,
+            IdTematica=result.IdTematica == null ? 1 : result.IdTematica,
+            NombreP=result.NombreP == null ? "SS" : result.NombreP,
+            DescripcionP=result.DescripcionP == null ? "sassadasdasd" : result.NombreP,
+            Precio=result.Precio,
+            ImagenPrincipal=result.ImagenPrincipal,
+            Popular=result.Popular,
+            Ingredienteselect=result.Ingredienteselect,
+            Saludable=result.Saludable,
+            NombreTematica=result.IdTematicaNavigation.NombreT,
+            NombreCategoria=result.IdCategoriaNavigation.Nombre
+        };
+
+            return resultado;
         }
 
 
