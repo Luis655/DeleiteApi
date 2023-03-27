@@ -336,7 +336,7 @@ namespace Deleite.Dal.Implementacion
                                     }
                                 }
                                 data.Nombre = producto.Nombre;
-                                data.Imagen = nombreImagen == "" ? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", data.Imagen) : nombreImagen;
+                                data.Imagen = nombreImagen == "" ? data.Imagen : nombreImagen;
                                 //gusradr los cambios en la base de datos
                                 _dbcontext.SaveChanges();
                                 transaction.Commit();
