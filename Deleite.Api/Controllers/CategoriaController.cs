@@ -92,6 +92,7 @@ public class CategoriaController : ControllerBase
          var imagenPredetermindad = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "imagenPredetermindad.png");
          var imagenExiste = System.IO.File.Exists(Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen)) ?  Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", result.Imagen) : imagenPredetermindad;
          urlFoto = System.IO.File.Exists(imagenExiste) ? Url.Content($"~/{result.Imagen}") : Url.Content($"~/imagenPredetermindad.png");
+         result.Imagen = "https://"+host+urlFoto;
         return Ok(result);
 
         }
