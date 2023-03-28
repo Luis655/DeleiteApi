@@ -1,8 +1,8 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Deleite.Entity.Models;
+namespace Deleite.Entity.Modelsold;
 
 public partial class DeleitebdContext : DbContext
 {
@@ -14,8 +14,6 @@ public partial class DeleitebdContext : DbContext
         : base(options)
     {
     }
-
-    public virtual DbSet<Calificacione> Calificaciones { get; set; }
 
     public virtual DbSet<Categoria> Categorias { get; set; }
 
@@ -30,21 +28,6 @@ public partial class DeleitebdContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Calificacione>(entity =>
-        {
-            entity.HasKey(e => e.Idcalificacion).HasName("PK_calificacion");
-
-            entity.ToTable("calificaciones");
-
-            entity.Property(e => e.Idcalificacion).HasColumnName("idcalificacion");
-            entity.Property(e => e.Estrellas).HasColumnName("estrellas");
-            entity.Property(e => e.Idproducto).HasColumnName("idproducto");
-
-            entity.HasOne(d => d.IdproductoNavigation).WithMany(p => p.Calificaciones)
-                .HasForeignKey(d => d.Idproducto)
-                .HasConstraintName("FK_idproducto");
-        });
-
         modelBuilder.Entity<Categoria>(entity =>
         {
             entity.HasKey(e => e.IdCategoria).HasName("PK_IDCATEGORIA");
@@ -174,4 +157,4 @@ public partial class DeleitebdContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-}
+}*/

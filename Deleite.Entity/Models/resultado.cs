@@ -13,7 +13,7 @@ namespace Deleite.Entity.Models
         public string? categoria { get; set; }
         public string? tematica { get; set; }
         public bool? Popular { get; set; }
-        public string Ingredienteselect { get; set; }
+        public string? Ingredienteselect { get; set; }
         public bool? Saludable { get; set; }
         
     }

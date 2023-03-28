@@ -140,9 +140,12 @@ public class ProductoController : ControllerBase {
     *
     */
     [HttpGet]
-    [Route("getimages/{id}")]
-    public async Task<IActionResult> getallimages(int id)
+    [Route("getimages/{id}/{confirm}")]
+    public async Task<IActionResult> getallimages(int id, bool confirm)
     {
+        List<resultado> resultados = new List<resultado>();
+
+        if(confirm){
         var resultid = await _dbcontext.Obtener(x => x.IdProducto.Equals(id));
         if(resultid!=null){
 
@@ -150,7 +153,6 @@ public class ProductoController : ControllerBase {
         var result = await _dbcontext.Consultarimgs(x => x.IdProducto == id);
         var host = _httpContext.HttpContext.Request.Host.Value;
 
-        List<resultado> resultados = new List<resultado>();
         foreach (var item in result)
         {
             var imagenExiste = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", item.NombreFoto);
@@ -183,6 +185,9 @@ public class ProductoController : ControllerBase {
         return Ok(resultados);
         }else{
             return NotFound();
+        }
+        }else{
+            return Ok(resultados);
         }
     }
     /**

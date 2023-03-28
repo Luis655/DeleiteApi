@@ -11,5 +11,5 @@ public partial class Categoria
 
     public string? Imagen { get; set; }
 
-    public virtual ICollection<Producto> Productos { get; } = new List<Producto>();
+    public virtual ICollection<Producto?> Productos { get; } = new List<Producto?>();
 }

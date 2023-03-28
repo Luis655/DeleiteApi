@@ -27,7 +27,6 @@ namespace Deleite.Dal.Interfaces
         Task<DtoImagenProducto> AddImageProducto(DtoImagenProducto entidad);
         Task<DtoProduco> CrearProducto(DtoProduco entidad); 
         Task<DtoCategorias> CrearCategoria(DtoCategorias entidad); 
-
         Task<bool> Editar(TEntity entidad);
         Task<bool> Eliminar(TEntity entidad);
         Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro=null);
