@@ -1,0 +1,36 @@
+name: Deploy to SmartASP
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Publish with dotnet
+      run: dotnet publish -c Release
+      working-directory: DeleiteApi
+    - name: Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: 'win5004.site4now.net'
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: '/site1/'
+        local-dir: './Deleite.Api/bin/Release/net6.0/publish/'
