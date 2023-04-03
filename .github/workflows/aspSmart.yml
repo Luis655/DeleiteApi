@@ -33,5 +33,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: '/site1/'
-        local-dir: '.DeleiteApi/Deleite.Api/bin/Release/net6.0/publish/'
+        local-dir: './DeleiteApi/Deleite.Api/bin/Release/net6.0/publish/'
 
