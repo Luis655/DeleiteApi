@@ -24,8 +24,8 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Publish with dotnet
-      run: dotnet publish -c Release
-      working-directory: /DeleiteApi/
+      run: dotnet publish -c Release ./DeleiteApi/
+      working-directory: .
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
